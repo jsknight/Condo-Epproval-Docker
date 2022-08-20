@@ -1,52 +1,112 @@
-FROM node:lts as build
+ARG ARCH=amd64
+ARG NODE_VERSION=16
+ARG OS=buster-slim
 
-RUN apt-get update \
-  && apt-get install -y build-essential python perl-modules
+#### Stage BASE ########################################################################################################
+FROM ${ARCH}/node:${NODE_VERSION}-${OS} AS base
 
-RUN deluser --remove-home node \
-  && groupadd --gid 1000 nodered \
-  && useradd --gid nodered --uid 1000 --shell /bin/bash --create-home nodered
+# Copy scripts
+COPY scripts/*.sh /tmp/
 
-RUN mkdir -p /data && chown 1000 /data
+# Install tools, create Node-RED app and data dir, add user and set rights
+RUN set -ex && \
+    apt-get update && apt-get install -y \
+        bash \
+        tzdata \
+        curl \
+        nano \
+        wget \
+        git \
+        openssl \
+        openssh-client \
+        ca-certificates \
+        chromium && \
+    mkdir -p /usr/src/node-red /data && chown 1000 /data &&  \
+    deluser --remove-home node && \
+    # adduser --home /usr/src/node-red --disabled-password --no-create-home node-red --uid 1000 && \
+    useradd --home-dir /usr/src/node-red --uid 1000 node-red && \
+    chown -R node-red:root /data && chmod -R g+rwX /data && \
+    chown -R node-red:root /usr/src/node-red && chmod -R g+rwX /usr/src/node-red
+    # chown -R node-red:node-red /data && \
+    # chown -R node-red:node-red /usr/src/node-red
 
-USER 1000
-WORKDIR /data
+# Set work directory
+WORKDIR /usr/src/node-red
 
-COPY ./package.json /data/
-RUN npm install
+# Setup SSH known_hosts file
+COPY known_hosts.sh .
+RUN ./known_hosts.sh /etc/ssh/ssh_known_hosts && rm /usr/src/node-red/known_hosts.sh
+RUN echo "PubkeyAcceptedKeyTypes +ssh-rsa" >> /etc/ssh/ssh_config
 
-## Release image
-FROM node:lts-slim
+# package.json contains Node-RED NPM module and node dependencies
+COPY package.json .
+COPY flows.json /data
+COPY config.yaml /data
+COPY settings.js /data
+COPY projects /data/projects
+COPY assets /data/assets
+COPY .config.projects.json /data
+COPY .config.projects.json.backup /data
+COPY scripts/entrypoint.sh .
 
-RUN apt-get update && apt-get install -y perl-modules && rm -rf /var/lib/apt/lists/*
+RUN chown -R node-red:root /data/assets && chmod -R g+rwX /data/assets
+RUN chown -R node-red:root /data/projects && chmod -R g+rwX /data/projects
 
-RUN deluser --remove-home node \
-  && groupadd --gid 1000 nodered \
-  && useradd --gid nodered --uid 1000 --shell /bin/bash --create-home nodered
+#### Stage BUILD #######################################################################################################
+FROM base AS build
 
-RUN mkdir -p /data && chown 1000 /data
+# Install Build tools
+RUN apt-get update && apt-get install -y build-essential python && \
+    npm install --unsafe-perm --no-update-notifier --no-fund --only=production && \
+    npm uninstall node-red-node-gpio && \
+    cp -R node_modules prod_node_modules
 
-USER 1000
+#### Stage RELEASE #####################################################################################################
+FROM base AS RELEASE
+ARG BUILD_DATE
+ARG BUILD_VERSION
+ARG BUILD_REF
+ARG NODE_RED_VERSION
+ARG ARCH
+ARG TAG_SUFFIX=default
 
-COPY ./server.js /data/
-COPY ./settings.js /data/
-COPY ./flows.json /data/
-COPY ./flows_cred.json /data/
-COPY ./package.json /data/
-COPY --from=build /data/node_modules /data/node_modules
+LABEL org.label-schema.build-date=${BUILD_DATE} \
+    org.label-schema.docker.dockerfile=".docker/Dockerfile" \
+    org.label-schema.license="Apache-2.0" \
+    org.label-schema.name="CondoEpproval" \
+    org.label-schema.version=${BUILD_VERSION} \
+    org.label-schema.description="CondoEpproval Online Services." \
+    org.label-schema.url="https://condoepproval.com" \
+    org.label-schema.vcs-ref=${BUILD_REF} \
+    org.label-schema.vcs-type="Git" \
+    org.label-schema.vcs-url="https://github.com/node-red/node-red-docker" \
+    org.label-schema.arch=${ARCH} \
+    authors="Jon Knight"
 
-USER 0
+COPY --from=build /usr/src/node-red/prod_node_modules ./node_modules
 
-RUN chgrp -R 0 /data \
-  && chmod -R g=u /data
+# Chown, install devtools & Clean up
+RUN chown -R node-red:root /usr/src/node-red && \
+    apt-get update && apt-get install -y build-essential python-dev python3 && \
+    rm -r /tmp/*
 
-USER 1000
+RUN npm config set cache /data/.npm --global
 
-WORKDIR /data
+USER node-red
 
-ENV PORT 1880
-ENV NODE_ENV=production
-ENV NODE_PATH=/data/node_modules
+# Env variables
+ENV NODE_RED_VERSION=$NODE_RED_VERSION \
+    NODE_PATH=/usr/src/node-red/node_modules:/data/node_modules \
+    PATH=/usr/src/node-red/node_modules/.bin:${PATH} \
+    FLOWS=flows.json
+
+# ENV NODE_RED_ENABLE_SAFE_MODE=true    # Uncomment to enable safe start mode (flows not running)
+ENV NODE_RED_ENABLE_PROJECTS=true
+
+# Expose the listening port of node-red
 EXPOSE 1880
 
-CMD ["node", "/data/server.js", "/data/flows.json"]
+# Add a healthcheck (default every 30 secs)
+# HEALTHCHECK CMD curl http://localhost:1880/ || exit 1
+
+ENTRYPOINT ["./entrypoint.sh"]

@@ -62,14 +62,14 @@ module.exports = {
     //tlsConfigDisableLocalFiles: true,
 
     // Colourise the console output of the debug node
-    //debugUseColors: true,
+    debugUseColors: true,
 
     // The file containing the flows. If not set, it defaults to flows_<hostname>.json
     flowFile: 'flows.json',
 
     // To enabled pretty-printing of the flow within the flow file, set the following
     //  property to true:
-    //flowFilePretty: true,
+    flowFilePretty: true,
 
     // By default, credentials are encrypted in storage using a generated key. To
     // specify your own secret, set the following property.
@@ -115,20 +115,27 @@ module.exports = {
 
     // If you installed the optional node-red-dashboard you can set it's path
     // relative to httpRoot
-    ui: { path: "ui" },
+    // ui: { path: "ui" },
 
     // Securing Node-RED
     // -----------------
     // To password protect the Node-RED editor and admin API, the following
     // property can be used. See http://nodered.org/docs/security.html for details.
-    //adminAuth: {
-    //    type: "credentials",
-    //    users: [{
-    //        username: "admin",
-    //        password: "$2a$08$zZWtXTja0fB1pzD4sHCMyOCMYz2Z6dNbM6tl8sJogENOMcxWV9DN.",
-    //        permissions: "*"
-    //    }]
-    //},
+    adminAuth: {
+        "type": "credentials",
+        "users": [
+            {
+                "username": "jknight",
+                "password": "$2b$08$Ywe3.qeSMm8Z9PxNMJM51.OG0glE.j6x57bDqe.RsQY/7p4/UsmX6",
+                "permissions": "*"
+            },
+            {
+                "username": "ctholberg",
+                "password": "$2b$08$Id0yAt.E.rfhY7NCrnOSM.BfL2NbS1YZTgY/Hd/o2rJMRXgIZd94u",
+                "permissions": "*"
+            }
+        ]
+    },
 
     // To password protect the node-defined HTTP endpoints (httpNodeRoot), or
     // the static content (httpStatic), the following properties can be used.
@@ -226,8 +233,23 @@ module.exports = {
     // from being list by `global.keys()`.
     // By default, the property is set to false to avoid accidental exposure of
     // their values. Setting this to true will cause the keys to be listed.
-    exportGlobalContextKeys: false,
+    exportGlobalContextKeys: true,
 
+    externalModules: {
+        autoInstall: true,   /** Whether the runtime will attempt to automatically install missing modules */
+        autoInstallRetry: 30, /** Interval, in seconds, between reinstall attempts */
+        palette: {              /** Configuration for the Palette Manager */
+             allowInstall: true, /** Enable the Palette Manager in the editor */
+             allowUpload: true,  /** Allow module tgz files to be uploaded and installed */
+             allowList: ["*"],
+             denyList: []
+        },
+         modules: {              /** Configuration for node-specified modules */
+             allowInstall: true,
+             allowList: ["*"],
+             denyList: []
+         }
+    },
 
     // Context Storage
     // The following property can be used to enable context storage. The configuration
@@ -268,9 +290,29 @@ module.exports = {
 
     // Customising the editor
     editorTheme: {
+        page: {
+            title: "CondoEpproval Admin"
+        },
+        header: {
+            title: "CondoEpproval Admin",
+            image: "/data/assets/logo-hoz.png", // or null to remove image
+            url: "http://condoepproval.com" // optional url to make the header text/image a link to this url
+        },
+        login: {
+            image: "/data/assets/logo.png" // a 256x256 image
+        },
+        theme: "solarized-dark",
+        tours: false,
         projects: {
             // To enable the Projects feature, set this value to true
-            enabled: false
+            enabled: true,
+        },
+        codeEditor: {
+            lib: "monaco",
+            options: {
+                theme: "vs"
+            }
         }
+
     }
 };
