@@ -17,7 +17,13 @@
     ],
     "dependencies": {
         "node-red": "3.0.2",
-        "@node-red-contrib-themes/theme-collection": "^3.0.3"
+        "@node-red-contrib-themes/theme-collection": "^3.0.3",
+        "@prescient-devices/node-red-contrib-downloadfile": "~1.0.7",
+        "node-red-contrib-cheerio": "~1.1.0",
+        "node-red-contrib-filesystem": "~1.0.0",
+        "node-red-contrib-puppeteer-new": "^0.3.6",
+        "node-red-contrib-reusable-flows": "~0.1.5",
+        "node-red-node-feedparser": "~0.3.0"
     },
     "engines": {
         "node": ">=16"

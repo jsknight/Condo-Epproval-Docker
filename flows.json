@@ -1,0 +1,3642 @@
+[
+    {
+        "id": "77d8bbaf2a134109",
+        "type": "tab",
+        "label": "Bootstrap",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5db3eb0a128e0293",
+        "type": "tab",
+        "label": "Tools",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "eda0173252eba302",
+        "type": "tab",
+        "label": "Frontend",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "09c370f1b9ff240d",
+        "type": "tab",
+        "label": "RSS Reader",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f2a192afe193e52c",
+        "type": "tab",
+        "label": "Xano API",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "eb82fe103d280263",
+        "type": "tab",
+        "label": "api.pexels.com",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c77901ebf2b7693e",
+        "type": "tab",
+        "label": "api.spoonacular.com",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "9c3a87363bc34709",
+        "type": "tab",
+        "label": "HUD scrape",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "8bd7a8a2e0f79ee7",
+        "type": "tab",
+        "label": "Search",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "1e470a97bdd78504",
+        "type": "tab",
+        "label": "CondoEpproval",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "9caf88784e0679f6",
+        "type": "tab",
+        "label": "Helmet and Speed Bumps",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "cd45b2f60b6d09bf",
+        "type": "function",
+        "z": "77d8bbaf2a134109",
+        "name": "Set Global Vars",
+        "func": "global.set(\"spoon_api_key\", \"4479d383948b4eaeb43ad59d39f252df\")\n\nglobal.set(\"xano_base_url\", \"https://xc18-e48d-15e9.n7.xano.io/api:Z0gWsFmb/\")\n\nglobal.set(\"xano_condo_base_url\", \"https://xdhh-3cty-erfr.n7.xano.io/api:6hazS0TY/\")\n\nglobal.set(\"theme_name\", msg.payload.theme);\n\nglobal.set(\"year\", new Date().getFullYear());\n\nmsg.theme = msg.payload.theme;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 120,
+        "wires": [
+            [
+                "3b9e552b1d3dbace"
+            ]
+        ]
+    },
+    {
+        "id": "ed95e3231651c010",
+        "type": "inject",
+        "z": "77d8bbaf2a134109",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 120,
+        "wires": [
+            [
+                "8c6da08e239d2ed7"
+            ]
+        ]
+    },
+    {
+        "id": "3b9e552b1d3dbace",
+        "type": "debug",
+        "z": "77d8bbaf2a134109",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1030,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "0fd0f4b92902b58f",
+        "type": "comment",
+        "z": "77d8bbaf2a134109",
+        "name": "Set Spoon API Key on Global",
+        "info": "",
+        "x": 140,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "8c6da08e239d2ed7",
+        "type": "file in",
+        "z": "77d8bbaf2a134109",
+        "name": "",
+        "filename": "/data/config.yaml",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 390,
+        "y": 120,
+        "wires": [
+            [
+                "88ffd85f32558059"
+            ]
+        ]
+    },
+    {
+        "id": "88ffd85f32558059",
+        "type": "yaml",
+        "z": "77d8bbaf2a134109",
+        "property": "payload",
+        "name": "",
+        "x": 650,
+        "y": 120,
+        "wires": [
+            [
+                "cd45b2f60b6d09bf"
+            ]
+        ]
+    },
+    {
+        "id": "6fc82eb4f16ad148",
+        "type": "link in",
+        "z": "5db3eb0a128e0293",
+        "name": "setXAPIKEY",
+        "links": [],
+        "x": 45,
+        "y": 60,
+        "wires": [
+            [
+                "94ccfe5a1738379e"
+            ]
+        ]
+    },
+    {
+        "id": "94ccfe5a1738379e",
+        "type": "function",
+        "z": "5db3eb0a128e0293",
+        "name": "SET x-api-key to Spoon API Key",
+        "func": "msg.headers = [];\nmsg.headers[\"x-api-key\"] = global.get(\"spoon_api_key\")||\"\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 230,
+        "y": 60,
+        "wires": [
+            [
+                "6ce1db27c79a0b40"
+            ]
+        ]
+    },
+    {
+        "id": "6ce1db27c79a0b40",
+        "type": "link out",
+        "z": "5db3eb0a128e0293",
+        "name": "",
+        "mode": "return",
+        "links": [],
+        "x": 405,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "fb2edb81debd097b",
+        "type": "inject",
+        "z": "5db3eb0a128e0293",
+        "name": "monokai",
+        "props": [
+            {
+                "p": "new_theme",
+                "v": "monokai",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 420,
+        "wires": [
+            [
+                "f99a74c6477eb80f"
+            ]
+        ]
+    },
+    {
+        "id": "f99a74c6477eb80f",
+        "type": "file in",
+        "z": "5db3eb0a128e0293",
+        "name": "",
+        "filename": "/data/settings.js",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 380,
+        "y": 220,
+        "wires": [
+            [
+                "f4b07a74f2daf85e"
+            ]
+        ]
+    },
+    {
+        "id": "93abf1f978ce24d8",
+        "type": "inject",
+        "z": "5db3eb0a128e0293",
+        "name": "cobalt2",
+        "props": [
+            {
+                "p": "new_theme",
+                "v": "cobalt2",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 110,
+        "y": 300,
+        "wires": [
+            [
+                "f99a74c6477eb80f"
+            ]
+        ]
+    },
+    {
+        "id": "0324510f8a3ea477",
+        "type": "inject",
+        "z": "5db3eb0a128e0293",
+        "name": "aurora",
+        "props": [
+            {
+                "p": "new_theme",
+                "v": "aurora",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 110,
+        "y": 260,
+        "wires": [
+            [
+                "f99a74c6477eb80f"
+            ]
+        ]
+    },
+    {
+        "id": "553325a5b368044b",
+        "type": "inject",
+        "z": "5db3eb0a128e0293",
+        "name": "dracula",
+        "props": [
+            {
+                "p": "new_theme",
+                "v": "dracula",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 110,
+        "y": 340,
+        "wires": [
+            [
+                "f99a74c6477eb80f"
+            ]
+        ]
+    },
+    {
+        "id": "2b5320847b8c3b2d",
+        "type": "inject",
+        "z": "5db3eb0a128e0293",
+        "name": "monoindustrial",
+        "props": [
+            {
+                "p": "new_theme",
+                "v": "monoindustrial",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 140,
+        "y": 540,
+        "wires": [
+            [
+                "f99a74c6477eb80f"
+            ]
+        ]
+    },
+    {
+        "id": "73ddb216d2b9c577",
+        "type": "inject",
+        "z": "5db3eb0a128e0293",
+        "name": "solarized-dark",
+        "props": [
+            {
+                "p": "new_theme",
+                "v": "solarized-dark",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 460,
+        "wires": [
+            [
+                "f99a74c6477eb80f"
+            ]
+        ]
+    },
+    {
+        "id": "47b3b67ebe175a81",
+        "type": "inject",
+        "z": "5db3eb0a128e0293",
+        "name": "solarized-light",
+        "props": [
+            {
+                "p": "new_theme",
+                "v": "solarized-light",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 500,
+        "wires": [
+            [
+                "f99a74c6477eb80f"
+            ]
+        ]
+    },
+    {
+        "id": "0b4fcedffcd47682",
+        "type": "inject",
+        "z": "5db3eb0a128e0293",
+        "name": "zenburn",
+        "props": [
+            {
+                "p": "new_theme",
+                "v": "zenburn",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 380,
+        "wires": [
+            [
+                "f99a74c6477eb80f"
+            ]
+        ]
+    },
+    {
+        "id": "d5b00c541168d6f2",
+        "type": "inject",
+        "z": "5db3eb0a128e0293",
+        "name": "dark",
+        "props": [
+            {
+                "p": "new_theme",
+                "v": "dark",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 110,
+        "y": 220,
+        "wires": [
+            [
+                "f99a74c6477eb80f"
+            ]
+        ]
+    },
+    {
+        "id": "f4b07a74f2daf85e",
+        "type": "split",
+        "z": "5db3eb0a128e0293",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 370,
+        "y": 300,
+        "wires": [
+            [
+                "3c8ec560d0f14940"
+            ]
+        ]
+    },
+    {
+        "id": "3c8ec560d0f14940",
+        "type": "switch",
+        "z": "5db3eb0a128e0293",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "theme_name",
+                "vt": "global"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 510,
+        "y": 300,
+        "wires": [
+            [
+                "c23ad075b29da395"
+            ],
+            [
+                "9adf63dabb070caa"
+            ]
+        ]
+    },
+    {
+        "id": "c23ad075b29da395",
+        "type": "function",
+        "z": "5db3eb0a128e0293",
+        "name": "function 1",
+        "func": "msg.payload = 'theme: \"' + msg.new_theme +'\",';\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 260,
+        "wires": [
+            [
+                "9adf63dabb070caa"
+            ]
+        ]
+    },
+    {
+        "id": "9adf63dabb070caa",
+        "type": "join",
+        "z": "5db3eb0a128e0293",
+        "name": "",
+        "mode": "auto",
+        "build": "string",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 690,
+        "y": 320,
+        "wires": [
+            [
+                "668295b9a1e51978"
+            ]
+        ]
+    },
+    {
+        "id": "668295b9a1e51978",
+        "type": "file",
+        "z": "5db3eb0a128e0293",
+        "name": "",
+        "filename": "/data/settings.js",
+        "filenameType": "str",
+        "appendNewline": false,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 400,
+        "y": 380,
+        "wires": [
+            [
+                "5b0df4a0b4b4862c"
+            ]
+        ]
+    },
+    {
+        "id": "5b0df4a0b4b4862c",
+        "type": "file in",
+        "z": "5db3eb0a128e0293",
+        "name": "",
+        "filename": "/data/config.yaml",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": true,
+        "x": 410,
+        "y": 440,
+        "wires": [
+            [
+                "d3bb72acf712312b"
+            ]
+        ]
+    },
+    {
+        "id": "d3bb72acf712312b",
+        "type": "split",
+        "z": "5db3eb0a128e0293",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 370,
+        "y": 520,
+        "wires": [
+            [
+                "c49f21274656e707"
+            ]
+        ]
+    },
+    {
+        "id": "c49f21274656e707",
+        "type": "switch",
+        "z": "5db3eb0a128e0293",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "theme_name",
+                "vt": "global"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 510,
+        "y": 520,
+        "wires": [
+            [
+                "f46b83eb6774a64e"
+            ],
+            [
+                "932df27dfcfea451"
+            ]
+        ]
+    },
+    {
+        "id": "f46b83eb6774a64e",
+        "type": "function",
+        "z": "5db3eb0a128e0293",
+        "name": "function 2",
+        "func": "msg.payload = 'theme: \"' + msg.new_theme +'\"';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 460,
+        "wires": [
+            [
+                "932df27dfcfea451"
+            ]
+        ]
+    },
+    {
+        "id": "932df27dfcfea451",
+        "type": "join",
+        "z": "5db3eb0a128e0293",
+        "name": "",
+        "mode": "custom",
+        "build": "string",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 730,
+        "y": 520,
+        "wires": [
+            [
+                "6a519f0a8a330a8a"
+            ]
+        ]
+    },
+    {
+        "id": "c0fcd12788117737",
+        "type": "debug",
+        "z": "5db3eb0a128e0293",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1510,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "6a519f0a8a330a8a",
+        "type": "file",
+        "z": "5db3eb0a128e0293",
+        "name": "",
+        "filename": "/data/config.yaml",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 890,
+        "y": 520,
+        "wires": [
+            [
+                "6c68d994a295d048"
+            ]
+        ]
+    },
+    {
+        "id": "6c68d994a295d048",
+        "type": "function",
+        "z": "5db3eb0a128e0293",
+        "name": "global.set(\"theme_name\", msg.new_theme);",
+        "func": "global.set(\"theme_name\", msg.new_theme);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 970,
+        "y": 360,
+        "wires": [
+            [
+                "49e07c1cc7083677"
+            ]
+        ]
+    },
+    {
+        "id": "49e07c1cc7083677",
+        "type": "exec",
+        "z": "5db3eb0a128e0293",
+        "command": "node-red restart",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "true",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 1280,
+        "y": 360,
+        "wires": [
+            [
+                "c0fcd12788117737"
+            ],
+            [
+                "c0fcd12788117737"
+            ],
+            [
+                "c0fcd12788117737"
+            ]
+        ]
+    },
+    {
+        "id": "60d2e7a34b457e74",
+        "type": "comment",
+        "z": "5db3eb0a128e0293",
+        "name": "Change Admin Theme",
+        "info": "",
+        "x": 140,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "a09b9281644a88fc",
+        "type": "comment",
+        "z": "5db3eb0a128e0293",
+        "name": "Cookie-based authorization (w/ expiration)",
+        "info": "",
+        "x": 200,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "e5bd2fb29dfdf1f1",
+        "type": "inject",
+        "z": "5db3eb0a128e0293",
+        "name": "at Startup",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 880,
+        "wires": [
+            [
+                "0b5dde3db674cb58"
+            ]
+        ]
+    },
+    {
+        "id": "0b5dde3db674cb58",
+        "type": "function",
+        "z": "5db3eb0a128e0293",
+        "name": "generate Token Key",
+        "func": "  let TokenKey = global.get('TokenKey')\n  if (TokenKey == null) {     // do not change TokenKey upon Node-RED deployment\n    global.set('TokenKey',crypto.randomBytes(16).toString('hex'))\n  }\n  return msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "crypto",
+                "module": "crypto"
+            }
+        ],
+        "x": 340,
+        "y": 880,
+        "wires": [
+            [
+                "7c029d497f0dbc7d"
+            ]
+        ]
+    },
+    {
+        "id": "7c029d497f0dbc7d",
+        "type": "debug",
+        "z": "5db3eb0a128e0293",
+        "name": "Status",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "'token key generated'",
+        "statusType": "jsonata",
+        "x": 550,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "80106edae73330cd",
+        "type": "inject",
+        "z": "5db3eb0a128e0293",
+        "name": "at Startup",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 820,
+        "wires": [
+            [
+                "e1e821402ba2abe1"
+            ]
+        ]
+    },
+    {
+        "id": "e1e821402ba2abe1",
+        "type": "change",
+        "z": "5db3eb0a128e0293",
+        "name": "set token lifetime",
+        "rules": [
+            {
+                "t": "set",
+                "p": "TokenLifetime",
+                "pt": "global",
+                "to": "2*60*1000",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "TokenLifetime",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 820,
+        "wires": [
+            [
+                "11640b19fd562bfb"
+            ]
+        ]
+    },
+    {
+        "id": "11640b19fd562bfb",
+        "type": "debug",
+        "z": "5db3eb0a128e0293",
+        "name": "Status",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "msg",
+        "x": 550,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "51d2de298ee82bd3",
+        "type": "template",
+        "z": "eda0173252eba302",
+        "name": "home",
+        "field": "template.body",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "\n    <header class=\"w-full container mx-auto\">\n        <div class=\"flex flex-col items-center py-12\">\n            <a class=\"font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl\" href=\"/bns\">\n                Bracken & Sage\n            </a>\n            <p class=\"text-lg text-gray-600\">\n                Welcome to our website!\n            </p>\n        </div>\n    </header>\n\n    <!-- Topic Nav -->\n    <nav class=\"w-full py-4 border-t border-b bg-gray-100\" x-data=\"{ open: false }\">\n        <div class=\"block sm:hidden\">\n            <a\n                href=\"#\"\n                class=\"block md:hidden text-base font-bold uppercase text-center flex justify-center items-center\"\n                @click=\"open = !open\"\n            >\n                Topics <i :class=\"open ? 'fa-chevron-down': 'fa-chevron-up'\" class=\"fas ml-2\"></i>\n            </a>\n        </div>\n        <div :class=\"open ? 'block': 'hidden'\" class=\"w-full flex-grow sm:flex sm:items-center sm:w-auto\">\n            <div class=\"w-full container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2\">\n                <a href=\"#\" class=\"hover:bg-gray-400 rounded py-2 px-4 mx-2\">Technology</a>\n                <a href=\"#\" class=\"hover:bg-gray-400 rounded py-2 px-4 mx-2\">Automotive</a>\n                <a href=\"#\" class=\"hover:bg-gray-400 rounded py-2 px-4 mx-2\">Finance</a>\n                <a href=\"#\" class=\"hover:bg-gray-400 rounded py-2 px-4 mx-2\">Politics</a>\n                <a href=\"#\" class=\"hover:bg-gray-400 rounded py-2 px-4 mx-2\">Culture</a>\n                <a href=\"#\" class=\"hover:bg-gray-400 rounded py-2 px-4 mx-2\">Sports</a>\n            </div>\n        </div>\n    </nav>\n\n\n    <div class=\"container mx-auto flex flex-wrap py-6\">\n\n        <!-- Posts Section -->\n        <section class=\"w-full md:w-2/3 flex flex-col items-center px-3\">\n            \n            {{#payload}}\n            <article class=\"flex flex-col shadow my-4\">\n                <!-- Article Image -->\n                <a href=\"#\" class=\"hover:opacity-75\">\n                    <img src=\"https://source.unsplash.com/collection/1346951/1000x500?sig=1\">\n                </a>\n                <div class=\"bg-white flex flex-col justify-start p-6\">\n                    <a href=\"#\" class=\"text-blue-700 text-sm font-bold uppercase pb-4\">Technology</a>\n                    <a href=\"#\" class=\"text-3xl font-bold hover:text-gray-700 pb-4\">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</a>\n                    <p href=\"#\" class=\"text-sm pb-3\">\n                        By <a href=\"#\" class=\"font-semibold hover:text-gray-800\">David Grzyb</a>, Published on April 25th, 2020\n                    </p>\n                    <a href=\"#\" class=\"pb-6\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis porta dui. Ut eu iaculis massa. Sed ornare ligula lacus, quis iaculis dui porta volutpat. In sit amet posuere magna..</a>\n                    <a href=\"#\" class=\"uppercase text-gray-800 hover:text-black\">Continue Reading <i class=\"fas fa-arrow-right\"></i></a>\n                </div>\n            </article>\n            {{/payload}}\n\n            <!-- Pagination -->\n            <div class=\"flex items-center py-8\">\n                <a href=\"#\" class=\"h-10 w-10 bg-blue-800 hover:bg-blue-600 font-semibold text-white text-sm flex items-center justify-center\">1</a>\n                <a href=\"#\" class=\"h-10 w-10 font-semibold text-gray-800 hover:bg-blue-600 hover:text-white text-sm flex items-center justify-center\">2</a>\n                <a href=\"#\" class=\"h-10 w-10 font-semibold text-gray-800 hover:text-gray-900 text-sm flex items-center justify-center ml-3\">Next <i class=\"fas fa-arrow-right ml-2\"></i></a>\n            </div>\n\n        </section>\n\n        <!-- Sidebar Section -->\n        <aside class=\"w-full md:w-1/3 flex flex-col items-center px-3\">\n\n            <div class=\"w-full bg-white shadow flex flex-col my-4 p-6\">\n                <p class=\"text-xl font-semibold pb-5\">About Us</p>\n                <p class=\"pb-2\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis est eu odio sagittis tristique. Vestibulum ut finibus leo. In hac habitasse platea dictumst.</p>\n                <a href=\"#\" class=\"w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4\">\n                    Get to know us\n                </a>\n            </div>\n\n            <div class=\"w-full bg-white shadow flex flex-col my-4 p-6\">\n                <p class=\"text-xl font-semibold pb-5\">Instagram</p>\n                <div class=\"grid grid-cols-3 gap-3\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=1\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=2\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=3\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=4\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=5\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=6\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=7\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=8\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=9\">\n                </div>\n                <a href=\"#\" class=\"w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-6\">\n                    <i class=\"fab fa-instagram mr-2\"></i> Follow @dgrzyb\n                </a>\n            </div>\n\n        </aside>\n\n    </div>\n",
+        "output": "str",
+        "x": 550,
+        "y": 100,
+        "wires": [
+            [
+                "d2418198ab5dae5c"
+            ]
+        ]
+    },
+    {
+        "id": "530a0cf1c71dc2ac",
+        "type": "http in",
+        "z": "eda0173252eba302",
+        "name": "",
+        "url": "/bns",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 100,
+        "wires": [
+            [
+                "19cb32df1ad0321d"
+            ]
+        ]
+    },
+    {
+        "id": "e77f697a9f29b054",
+        "type": "template",
+        "z": "eda0173252eba302",
+        "name": "about",
+        "field": "template.body",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "\n    <header class=\"w-full container mx-auto\">\n        <div class=\"flex flex-col items-center py-12\">\n            <a class=\"font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl\" href=\"/bns\">\n                Bracken & Sage\n            </a>\n            <p class=\"text-lg text-gray-600\">\n                About Us\n            </p>\n        </div>\n    </header>\n\n\n    <div class=\"container mx-auto flex flex-wrap py-6\">\n\n        <!-- Posts Section -->\n        <section class=\"w-full md:w-2/3 flex flex-col items-center px-3\">\n\n            <article class=\"flex flex-col shadow my-4\">\n                <!-- Article Image -->\n                <a href=\"#\" class=\"hover:opacity-75\">\n                    <img src=\"https://source.unsplash.com/collection/1346951/1000x500?sig=1\">\n                </a>\n                <div class=\"bg-white flex flex-col justify-start p-6\">\n                    <a href=\"#\" class=\"text-blue-700 text-sm font-bold uppercase pb-4\">Technology</a>\n                    <a href=\"#\" class=\"text-3xl font-bold hover:text-gray-700 pb-4\">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</a>\n                    <p href=\"#\" class=\"text-sm pb-3\">\n                        By <a href=\"#\" class=\"font-semibold hover:text-gray-800\">David Grzyb</a>, Published on April 25th, 2020\n                    </p>\n                    <a href=\"#\" class=\"pb-6\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis porta dui. Ut eu iaculis massa. Sed ornare ligula lacus, quis iaculis dui porta volutpat. In sit amet posuere magna..</a>\n                    <a href=\"#\" class=\"uppercase text-gray-800 hover:text-black\">Continue Reading <i class=\"fas fa-arrow-right\"></i></a>\n                </div>\n            </article>\n\n            <article class=\"flex flex-col shadow my-4\">\n                <!-- Article Image -->\n                <a href=\"#\" class=\"hover:opacity-75\">\n                    <img src=\"https://source.unsplash.com/collection/1346951/1000x500?sig=2\">\n                </a>\n                <div class=\"bg-white flex flex-col justify-start p-6\">\n                    <a href=\"#\" class=\"text-blue-700 text-sm font-bold uppercase pb-4\">Automotive, Finance</a>\n                    <a href=\"#\" class=\"text-3xl font-bold hover:text-gray-700 pb-4\">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</a>\n                    <p href=\"#\" class=\"text-sm pb-3\">\n                        By <a href=\"#\" class=\"font-semibold hover:text-gray-800\">David Grzyb</a>, Published on January 12th, 2020\n                    </p>\n                    <a href=\"#\" class=\"pb-6\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis porta dui. Ut eu iaculis massa. Sed ornare ligula lacus, quis iaculis dui porta volutpat. In sit amet posuere magna..</a>\n                    <a href=\"#\" class=\"uppercase text-gray-800 hover:text-black\">Continue Reading <i class=\"fas fa-arrow-right\"></i></a>\n                </div>\n            </article>\n\n            <article class=\"flex flex-col shadow my-4\">\n                <!-- Article Image -->\n                <a href=\"#\" class=\"hover:opacity-75\">\n                    <img src=\"https://source.unsplash.com/collection/1346951/1000x500?sig=3\">\n                </a>\n                <div class=\"bg-white flex flex-col justify-start p-6\">\n                    <a href=\"#\" class=\"text-blue-700 text-sm font-bold uppercase pb-4\">Sports</a>\n                    <a href=\"#\" class=\"text-3xl font-bold hover:text-gray-700 pb-4\">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</a>\n                    <p href=\"#\" class=\"text-sm pb-3\">\n                        By <a href=\"#\" class=\"font-semibold hover:text-gray-800\">David Grzyb</a>, Published on October 22nd, 2019\n                    </p>\n                    <a href=\"#\" class=\"pb-6\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis porta dui. Ut eu iaculis massa. Sed ornare ligula lacus, quis iaculis dui porta volutpat. In sit amet posuere magna..</a>\n                    <a href=\"#\" class=\"uppercase text-gray-800 hover:text-black\">Continue Reading <i class=\"fas fa-arrow-right\"></i></a>\n                </div>\n            </article>\n\n            <!-- Pagination -->\n            <div class=\"flex items-center py-8\">\n                <a href=\"#\" class=\"h-10 w-10 bg-blue-800 hover:bg-blue-600 font-semibold text-white text-sm flex items-center justify-center\">1</a>\n                <a href=\"#\" class=\"h-10 w-10 font-semibold text-gray-800 hover:bg-blue-600 hover:text-white text-sm flex items-center justify-center\">2</a>\n                <a href=\"#\" class=\"h-10 w-10 font-semibold text-gray-800 hover:text-gray-900 text-sm flex items-center justify-center ml-3\">Next <i class=\"fas fa-arrow-right ml-2\"></i></a>\n            </div>\n\n        </section>\n\n        <!-- Sidebar Section -->\n        <aside class=\"w-full md:w-1/3 flex flex-col items-center px-3\">\n\n            <div class=\"w-full bg-white shadow flex flex-col my-4 p-6\">\n                <p class=\"text-xl font-semibold pb-5\">About Us</p>\n                <p class=\"pb-2\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis est eu odio sagittis tristique. Vestibulum ut finibus leo. In hac habitasse platea dictumst.</p>\n                <a href=\"#\" class=\"w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4\">\n                    Get to know us\n                </a>\n            </div>\n\n            <div class=\"w-full bg-white shadow flex flex-col my-4 p-6\">\n                <p class=\"text-xl font-semibold pb-5\">Instagram</p>\n                <div class=\"grid grid-cols-3 gap-3\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=1\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=2\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=3\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=4\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=5\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=6\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=7\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=8\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=9\">\n                </div>\n                <a href=\"#\" class=\"w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-6\">\n                    <i class=\"fab fa-instagram mr-2\"></i> Follow @dgrzyb\n                </a>\n            </div>\n\n        </aside>\n\n    </div>\n",
+        "output": "str",
+        "x": 550,
+        "y": 160,
+        "wires": [
+            [
+                "d2418198ab5dae5c"
+            ]
+        ]
+    },
+    {
+        "id": "ba020dc4b8edb579",
+        "type": "http in",
+        "z": "eda0173252eba302",
+        "name": "",
+        "url": "/bns/about",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 160,
+        "wires": [
+            [
+                "e77f697a9f29b054"
+            ]
+        ]
+    },
+    {
+        "id": "32147b8e5b7becd0",
+        "type": "template",
+        "z": "eda0173252eba302",
+        "name": "shop",
+        "field": "template.body",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "\n    <header class=\"w-full container mx-auto\">\n        <div class=\"flex flex-col items-center py-12\">\n            <a class=\"font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl\" href=\"/bns\">\n                Bracken & Sage\n            </a>\n            <p class=\"text-lg text-gray-600\">\n                Shop with us!\n            </p>\n        </div>\n    </header>\n\n\n    <div class=\"container mx-auto flex flex-wrap py-6\">\n\n        <!-- Posts Section -->\n        <section class=\"w-full md:w-2/3 flex flex-col items-center px-3\">\n\n            <article class=\"flex flex-col shadow my-4\">\n                <!-- Article Image -->\n                <a href=\"#\" class=\"hover:opacity-75\">\n                    <img src=\"https://source.unsplash.com/collection/1346951/1000x500?sig=3\">\n                </a>\n                <div class=\"bg-white flex flex-col justify-start p-6\">\n                    <a href=\"#\" class=\"text-blue-700 text-sm font-bold uppercase pb-4\">Sports</a>\n                    <a href=\"#\" class=\"text-3xl font-bold hover:text-gray-700 pb-4\">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</a>\n                    <p href=\"#\" class=\"text-sm pb-3\">\n                        By <a href=\"#\" class=\"font-semibold hover:text-gray-800\">David Grzyb</a>, Published on October 22nd, 2019\n                    </p>\n                    <a href=\"#\" class=\"pb-6\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis porta dui. Ut eu iaculis massa. Sed ornare ligula lacus, quis iaculis dui porta volutpat. In sit amet posuere magna..</a>\n                    <a href=\"#\" class=\"uppercase text-gray-800 hover:text-black\">Continue Reading <i class=\"fas fa-arrow-right\"></i></a>\n                </div>\n            </article>\n\n            <!-- Pagination -->\n            <div class=\"flex items-center py-8\">\n                <a href=\"#\" class=\"h-10 w-10 bg-blue-800 hover:bg-blue-600 font-semibold text-white text-sm flex items-center justify-center\">1</a>\n                <a href=\"#\" class=\"h-10 w-10 font-semibold text-gray-800 hover:bg-blue-600 hover:text-white text-sm flex items-center justify-center\">2</a>\n                <a href=\"#\" class=\"h-10 w-10 font-semibold text-gray-800 hover:text-gray-900 text-sm flex items-center justify-center ml-3\">Next <i class=\"fas fa-arrow-right ml-2\"></i></a>\n            </div>\n\n        </section>\n\n        <!-- Sidebar Section -->\n        <aside class=\"w-full md:w-1/3 flex flex-col items-center px-3\">\n\n            <div class=\"w-full bg-white shadow flex flex-col my-4 p-6\">\n                <p class=\"text-xl font-semibold pb-5\">About Us</p>\n                <p class=\"pb-2\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis est eu odio sagittis tristique. Vestibulum ut finibus leo. In hac habitasse platea dictumst.</p>\n                <a href=\"#\" class=\"w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4\">\n                    Get to know us\n                </a>\n            </div>\n\n            <div class=\"w-full bg-white shadow flex flex-col my-4 p-6\">\n                <p class=\"text-xl font-semibold pb-5\">Instagram</p>\n                <div class=\"grid grid-cols-3 gap-3\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=1\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=2\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=3\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=4\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=5\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=6\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=7\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=8\">\n                    <img class=\"hover:opacity-75\" src=\"https://source.unsplash.com/collection/1346951/150x150?sig=9\">\n                </div>\n                <a href=\"#\" class=\"w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-6\">\n                    <i class=\"fab fa-instagram mr-2\"></i> Follow @dgrzyb\n                </a>\n            </div>\n\n        </aside>\n\n    </div>\n",
+        "output": "str",
+        "x": 550,
+        "y": 220,
+        "wires": [
+            [
+                "d2418198ab5dae5c"
+            ]
+        ]
+    },
+    {
+        "id": "4a6cfd08e01a6ce1",
+        "type": "http in",
+        "z": "eda0173252eba302",
+        "name": "",
+        "url": "/bns/shop",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 220,
+        "wires": [
+            [
+                "32147b8e5b7becd0"
+            ]
+        ]
+    },
+    {
+        "id": "0318613b581a9f22",
+        "type": "http in",
+        "z": "eda0173252eba302",
+        "name": "",
+        "url": "/recipes/random",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 280,
+        "wires": [
+            [
+                "a0d5b9fd90f43c92"
+            ]
+        ]
+    },
+    {
+        "id": "d256deabe7280d34",
+        "type": "http in",
+        "z": "eda0173252eba302",
+        "name": "",
+        "url": "/nutrition-label",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 440,
+        "wires": [
+            [
+                "f64f5ae21b685afe"
+            ]
+        ]
+    },
+    {
+        "id": "95a063af418192e8",
+        "type": "http in",
+        "z": "eda0173252eba302",
+        "name": "",
+        "url": "/taste-profile",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 560,
+        "wires": [
+            [
+                "856a964c1e94c225"
+            ]
+        ]
+    },
+    {
+        "id": "1062ba280105a635",
+        "type": "http in",
+        "z": "eda0173252eba302",
+        "name": "",
+        "url": "/recipe-card",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 500,
+        "wires": [
+            [
+                "7c604727b21b92cb"
+            ]
+        ]
+    },
+    {
+        "id": "9e5aba1357db8bb2",
+        "type": "http response",
+        "z": "eda0173252eba302",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1030,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "61c19bf243f205b0",
+        "type": "template",
+        "z": "eda0173252eba302",
+        "name": "Body",
+        "field": "template.body",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<div \n    class=\"lg:pl-64 flex flex-col w-0 flex-1\" \n    x-data=\"{\n        tags: [{{#tags}}'{{.}}',{{/tags}}],\n        clearTags() {\n            this.tags = [];\n        } \n    }\"\n    x-init=\"$watch('tags', (value, oldValue) => console.log('tags', value, oldValue))\"\n>\n    \n    <div class=\"sticky top-0 z-10 flex-shrink-0 flex flex-col h-26 bg-white border-b border-gray-200\">\n        \n        <div class=\"flex h-16\">\n            <button type=\"button\" class=\"px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-900 lg:hidden\" @click=\"open = true\">\n                <span class=\"sr-only\">Open sidebar</span>\n                <!-- Heroicon name: outline/menu-alt-2 -->\n                <svg class=\"h-6 w-6\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" aria-hidden=\"true\">\n                    <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M4 6h16M4 12h16M4 18h7\" />\n                </svg>\n            </button>\n            <div class=\"flex-1 px-4 flex justify-between\">\n                <div class=\"flex-1 flex\">\n                    <form class=\"w-full flex lg:ml-0\" action=\"\" method=\"GET\">\n                        <label for=\"search-field\" class=\"sr-only\">Search</label>\n                        <div class=\"relative w-full text-gray-400 focus-within:text-gray-600\">\n                            <div class=\"absolute inset-y-0 left-0 flex items-center pointer-events-none\">\n                                <!-- Heroicon name: solid/search -->\n                                <svg class=\"h-5 w-5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" fill=\"currentColor\" aria-hidden=\"true\">\n                                    <path fill-rule=\"evenodd\" d=\"M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z\" clip-rule=\"evenodd\" />\n                                </svg>\n                            </div>\n                            <input id=\"tags\" x-model=\"tags.join(',')\" class=\"block w-full h-full pl-8 pr-3 py-2 border-transparent text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-0 focus:border-transparent sm:text-sm\" placeholder=\"Search\" type=\"search\" name=\"tags\">\n                        </div>\n                    </form>\n                </div>\n                <div class=\"ml-4 flex items-center lg:ml-6\">\n                    <button type=\"button\" onClick=\"node.send({payload:'test'})\" class=\"inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-rose-600 hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900\">Create</button>\n                </div>\n            </div>\n        </div>\n        \n        <div class=\"flex h-auto\"\n            x-data=\"{\n                filterOpen:false, \n                sortOpen: false,\n                hasScrolled: false,\n                reactOnScroll() {\n                    if (this.$el.getBoundingClientRect().top < 150 && window.scrollY > 150) {\n                        this.hasScrolled = true;\n                    } else {\n                        this.hasScrolled = false;\n                    }\n                } \n            }\"\n            x-init=\"reactOnScroll()\"\n            @scroll.window=\"reactOnScroll()\"\n        >\n            <section \n                x-show=\"!hasScrolled\"\n                aria-labelledby=\"filter-heading\" \n                class=\"flex-1 px-4 relative z-10 border-t border-b border-gray-200 grid items-center\"\n            >\n                <h2 id=\"filter-heading\" class=\"sr-only\">Filters</h2>\n                <div class=\"relative col-start-1 row-start-1 py-4\">\n                  <div class=\"max-w-7xl mx-auto flex space-x-6 divide-x divide-gray-200 text-sm px-4 sm:px-6 lg:px-8\">\n                    <div>\n                      <button @click=\"filterOpen = !filterOpen\" \n                      \n                      type=\"button\" class=\"group text-gray-700 font-medium flex items-center\" aria-controls=\"disclosure-1\" aria-expanded=\"false\">\n                        <!-- Heroicon name: solid/filter -->\n                        <svg class=\"flex-none w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" fill=\"currentColor\">\n                          <path fill-rule=\"evenodd\" d=\"M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z\" clip-rule=\"evenodd\" />\n                        </svg>\n                        <strong x-text=\"tags.length\" class=\"inline-block mr-1\"></strong> Filters\n                      </button>\n                    </div>\n                    <div class=\"pl-6\">\n                      <button @click.prevent=\"clearTags()\" type=\"button\" class=\"text-gray-500\">Clear all</button>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"bg-white border-1 border-gray-400 py-10\" id=\"disclosure-1\" x-show=\"filterOpen\">\n                  <div class=\"max-w-7xl mx-auto grid grid-cols-2 gap-x-4 px-4 text-sm sm:px-6 md:gap-x-6 lg:px-8\">\n                    <div class=\"grid grid-flow-row-dense grid-cols-1 gap-y-10 auto-rows-min md:grid-cols-3 md:gap-x-6\">\n                      \n                      <fieldset x-data='{mealTypes:[\"main course\",\"side dish\",\"dessert\",\"appetizer\",\"salad\",\"bread\",\"breakfast\",\"soup\",\"beverage\",\"sauce\",\"marinade\",\"fingerfood\",\"snack\",\"drink\"]}'>\n                        <legend class=\"block font-medium\">Meal Type</legend>\n                        <div class=\"pt-6 space-y-6 sm:pt-4 sm:space-y-2\">\n                            \n                            <template x-for=\"(type, index) in mealTypes\" />\n                                <div class=\"flex items-center text-base sm:text-sm\">\n                                    <input \n                                        :id=\"'types-'+ index\" \n                                        :value=\"type\" \n                                        x-model=\"tags\"\n                                        name=\"tags[]\" \n                                        type=\"checkbox\" \n                                        class=\"flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500\"\n                                    >\n                                    <label :for=\"'types-'+ index\" x-text=\"type\" class=\"ml-3 min-w-0 flex-1 text-gray-600\"></label>\n                                </div>\n                            </template>\n\n                        </div>\n                      </fieldset>\n                      \n                         <fieldset \n                            class=\"col-span-2\"\n                            x-data='{cuisines:[\"African\",\"American\",\"British\",\"Cajun\",\"Caribbean\",\"Chinese\",\"Eastern European\",\"European\",\"French\",\"German\",\"Greek\",\"Indian\",\"Irish\",\"Italian\",\"Japanese\",\"Jewish\",\"Korean\",\"Latin American\",\"Mediterranean\",\"Mexican\",\"Middle Eastern\",\"Nordic\",\"Southern\",\"Spanish\",\"Thai\",\"Vietnamese\"]}'\n                        >\n                            <legend class=\"block font-medium\">Cuisines</legend>\n                            <div class=\"pt-6 space-y-6 sm:pt-4 sm:space-y-2 grid grid-cols-2\">\n                                \n                                <template x-for=\"(cuisine, index) in cuisines\" />\n                                    <div class=\"flex items-center text-base sm:text-sm\">\n                                        <input \n                                        :id=\"'cuisine-'+ index\" \n                                        :value=\"cuisine\" \n                                        x-model=\"tags\"\n                                        name=\"tags[]\" \n                                        type=\"checkbox\" class=\"flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500\">\n                                        <label :for=\"'cuisine-'+ index\" x-text=\"cuisine\" class=\"ml-3 min-w-0 flex-1 text-gray-600\"></label>\n                                    </div>\n                                </template>\n    \n                            </div>\n                        </fieldset>\n                        \n                    \n                        \n                    </div>\n                    <div class=\"grid grid-cols-1 gap-y-10 auto-rows-min md:grid-cols-2 md:gap-x-6\">\n                      \n                      <fieldset x-data='{diets:[\"Gluten Free\",\"Ketogenic\",\"Vegetarian\",\"Lacto-Vegetarian\",\"Ovo-Vegetarian\",\"Vegan\",\"Pescetarian\",\"Paleo\",\"Primal\",\"Low FODMAP\",\"Whole30\"]}'>\n                        <legend class=\"block font-medium\">Diet</legend>\n                        <div class=\"pt-6 space-y-6 sm:pt-4 sm:space-y-2\">\n                            \n                            <template x-for=\"(diet, index) in diets\" />\n                                <div class=\"flex items-center text-base sm:text-sm\">\n                                    <input \n                                        :id=\"'diet-'+ index\" \n                                        :value=\"diet\" \n                                        x-model=\"tags\"\n                                        name=\"tags[]\" \n                                        type=\"checkbox\" \n                                        class=\"flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500\"\n                                    >\n                                    <label :for=\"'diet-'+ index\" x-text=\"diet\" class=\"ml-3 min-w-0 flex-1 text-gray-600\"></label>\n                                </div>\n                            </template>\n\n                        </div>\n                      </fieldset>\n                      \n                         <fieldset \n                            x-data='{intolerances:[\"Dairy\",\"Egg\",\"Gluten\",\"Grain\",\"Peanut\",\"Seafood\",\"Sesame\",\"Shellfish\",\"Soy\",\"Sulfite\",\"Tree Nut\",\"Wheat\"]}'\n                        >\n                            <legend class=\"block font-medium\">Intolerances</legend>\n                            <div class=\"pt-6 space-y-6 sm:pt-4 sm:space-y-2\">\n                                \n                                <template x-for=\"(intolerance, index) in intolerances\" />\n                                    <div class=\"flex items-center text-base sm:text-sm\">\n                                        <input \n                                        :id=\"'intolerance-'+ index\" \n                                        :value=\"intolerance\" \n                                        x-model=\"tags\"\n                                        name=\"tags[]\" \n                                        type=\"checkbox\" class=\"flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500\">\n                                        <label :for=\"'intolerance-'+ index\" x-text=\"intolerance\" class=\"ml-3 min-w-0 flex-1 text-gray-600\"></label>\n                                    </div>\n                                </template>\n    \n                            </div>\n                        </fieldset>\n                        \n                    </div>\n                  </div>\n                </div>\n                <div class=\"col-start-1 row-start-1 py-4\">\n                  <div class=\"flex justify-end max-w-7xl mx-auto px-4 sm:px-6 lg:px-8\">\n                    <div class=\"relative inline-block\">\n                      <div class=\"flex\">\n                        <button @click=\"sortOpen = !sortOpen\" type=\"button\" class=\"group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900\" id=\"menu-button\" aria-expanded=\"false\" aria-haspopup=\"true\">\n                          Sort\n                          <!-- Heroicon name: solid/chevron-down -->\n                          <svg class=\"flex-shrink-0 -mr-1 ml-1 h-5 w-5 text-gray-400 group-hover:text-gray-500\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" fill=\"currentColor\" aria-hidden=\"true\">\n                            <path fill-rule=\"evenodd\" d=\"M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z\" clip-rule=\"evenodd\" />\n                          </svg>\n                        </button>\n                      </div>\n            \n                      <!--\n                        Dropdown menu, show/hide based on menu state.\n            \n                        Entering: \"transition ease-out duration-100\"\n                          From: \"transform opacity-0 scale-95\"\n                          To: \"transform opacity-100 scale-100\"\n                        Leaving: \"transition ease-in duration-75\"\n                          From: \"transform opacity-100 scale-100\"\n                          To: \"transform opacity-0 scale-95\"\n                      -->\n                      <div \n                        x-show=\"sortOpen\" \n                        x-transition:enter=\"transition ease-out duration-100\" \n                        x-transition:enter-start=\"transform opacity-0 scale-95\" \n                        x-transition:enter-end=\"transform opacity-100 scale-100\" \n                        x-transition:leave=\"transition ease-in duration-75\" \n                        x-transition:leave-start=\"transform opacity-100 scale-100\" \n                        x-transition:leave-end=\"transform opacity-0 scale-95\"\n                        role=\"menu\" \n                        aria-orientation=\"vertical\" \n                        aria-labelledby=\"menu-button\" \n                        tabindex=\"-1\"\n                        class=\"origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-2xl bg-white ring-1 ring-black ring-opacity-5 focus:outline-none\" \n                    >\n                        <div class=\"py-1\" role=\"none\">\n                          <!--\n                            Active: \"bg-gray-100\", Not Active: \"\"\n            \n                            Selected: \"font-medium text-gray-900\", Not Selected: \"text-gray-500\"\n                          -->\n                          <a href=\"#\" class=\"font-medium text-gray-900 block px-4 py-2 text-sm\" role=\"menuitem\" tabindex=\"-1\" id=\"menu-item-0\"> Most Popular </a>\n            \n                          <a href=\"#\" class=\"text-gray-500 block px-4 py-2 text-sm\" role=\"menuitem\" tabindex=\"-1\" id=\"menu-item-1\"> Best Rating </a>\n            \n                          <a href=\"#\" class=\"text-gray-500 block px-4 py-2 text-sm\" role=\"menuitem\" tabindex=\"-1\" id=\"menu-item-2\"> Newest </a>\n                        </div>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n              </section>\n        </div>\n    </div>\n    \n    \n    \n    \n    \n    \n    \n    \n    \n\n    <main class=\"flex-1\">\n        <div class=\"py-8 xl:py-10\">\n            {{#recipe}}\n            <div class=\"max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 xl:max-w-5xl xl:grid xl:grid-cols-3\">\n                <div class=\"xl:col-span-2 xl:pr-8 xl:border-r xl:border-gray-200\">\n                <div>\n                  <div>\n                    <div class=\"md:flex md:items-center md:justify-between md:space-x-4 xl:border-b xl:pb-6\">\n                      <div>\n                        <h1 class=\"text-2xl font-bold text-gray-900\">{{ title }}</h1>\n                      </div>\n                      <div class=\"mt-4 flex space-x-3 md:mt-0\">\n                        <button type=\"button\" class=\"inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900\">\n                            <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2\">\n                              <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z\" />\n                            </svg>\n                        </button>\n                      </div>\n                    </div>\n                    \n                    <div class=\"py-3 xl:pt-6 xl:pb-0\">\n                        <div class=\"mb-5 max-w-none\">\n                          <img src=\"https://spoonacular.com/recipeImages/{{ id }}-556x370.jpg\" class=\"min-w-full rounded-lg\" />\n                        </div>\n                    </div>\n                    \n                    <aside class=\"mt-8 xl:hidden\">\n                      <h2 class=\"sr-only\">Details</h2>\n                      <div class=\"space-y-5\">\n                            {{#preparationMinutes}}\n                            <div class=\"flex items-center space-x-2\">\n                              <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-5 w-5\" viewBox=\"0 0 20 20\" fill=\"currentColor\">\n                                  <path fill-rule=\"evenodd\" d=\"M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z\" clip-rule=\"evenodd\" />\n                                </svg>\n                              <span class=\"text-sm font-medium\">Prep In {{ preparationMinutes }} Mins</span>\n                            </div>\n                            {{/preparationMinutes}}\n                            {{#cookingMinutes}}\n                            <div class=\"flex items-center space-x-2\">\n                              <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-5 w-5\" viewBox=\"0 0 20 20\" fill=\"currentColor\">\n                                  <path fill-rule=\"evenodd\" d=\"M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z\" clip-rule=\"evenodd\" />\n                                </svg>\n                              <span class=\"text-sm font-medium\">Cook Time {{ cookingMinutes }} Mins</span>\n                            </div>\n                            {{/cookingMinutes}}\n                            <div class=\"flex items-center space-x-2\">\n                              <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-5 w-5\" viewBox=\"0 0 20 20\" fill=\"currentColor\">\n                                  <path fill-rule=\"evenodd\" d=\"M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z\" clip-rule=\"evenodd\" />\n                                </svg>\n                              <span class=\"text-sm font-medium\">Ready In {{ readyInMinutes }} Mins</span>\n                            </div>\n                            <div class=\"flex items-center space-x-2\">\n                              <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2\">\n                                  <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z\" />\n                                </svg>\n                              <span class=\"text-gray-900 text-sm font-medium\">{{ extendedIngredients.length }} Ingredients</span>\n                            </div>\n                            <div class=\"flex items-center space-x-2\">\n                                <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2\">\n                                    <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z\" />\n                                </svg>\n                                <span class=\"text-gray-900 text-sm font-medium\">Serves <span>{{ servings }}</span></span>\n                            </div>\n                      </div>\n                      <div class=\"mt-6 border-t border-b border-gray-200 py-6 space-y-8\">\n                        \n                        <div>\n                          <h2 class=\"text-sm font-medium text-gray-500\">Ingredients</h2>\n                          <ul role=\"list\" class=\"mt-3 space-y-3 min-w-full\">\n                            {{#extendedIngredients }}\n                                <li class=\"flex justify-start min-w-full\">\n                                  <a href=\"/ingredient/{{id}}\" class=\"flex items-center space-x-3\">\n                                    <div class=\"flex-shrink-0\">\n                                      <img class=\"h-10 w-10 rounded-md\" src=\"https://spoonacular.com/cdn/ingredients_100x100/{{image}}\" alt=\"{{name}}\">\n                                    </div>\n                                    <div class=\"text-sm font-medium text-gray-900\"><span class=\"font-bold text-black\">{{ measures.us.amount }} {{ measures.us.unitShort }}</span> <span class=\"capitalize font-medium text-gray-900\">{{ nameClean }}</span></div>\n                                  </a>\n                                </li>\n                            {{/extendedIngredients }}\n                          </ul>\n                        </div>\n                        <div>\n                          <h2 class=\"text-sm font-medium text-gray-500\">Tags</h2>\n                          <ul role=\"list\" class=\"mt-2 leading-8\">\n                            {{#cuisine}}\n                            <li class=\"inline\">\n                              <a href=\"#\" class=\"relative inline-flex items-center rounded-full border border-gray-300 px-3 py-0.5\">\n                                <div class=\"absolute flex-shrink-0 flex items-center justify-center\">\n                                  <span class=\"h-1.5 w-1.5 rounded-full bg-red-500\" aria-hidden=\"true\"></span>\n                                </div>\n                                <div class=\"ml-3.5 text-sm font-medium text-gray-900\">{{ . }}</div>\n                              </a>\n                            </li>\n                            {{/cuisine}}\n                            {{#dishTypes}}\n                            <li class=\"inline\">\n                              <a href=\"#\" class=\"relative inline-flex items-center rounded-full border border-gray-300 px-3 py-0.5\">\n                                <div class=\"absolute flex-shrink-0 flex items-center justify-center\">\n                                  <span class=\"h-1.5 w-1.5 rounded-full bg-yellow-500\" aria-hidden=\"true\"></span>\n                                </div>\n                                <div class=\"ml-3.5 text-sm font-medium text-gray-900\">{{ . }}</div>\n                              </a>\n                            </li>\n                            {{/dishTypes}}\n                            {{#diets}}\n                            <li class=\"inline\">\n                              <a href=\"#\" class=\"relative inline-flex items-center rounded-full border border-gray-300 px-3 py-0.5\">\n                                <div class=\"absolute flex-shrink-0 flex items-center justify-center\">\n                                  <span class=\"h-1.5 w-1.5 rounded-full bg-cyan-500\" aria-hidden=\"true\"></span>\n                                </div>\n                                <div class=\"ml-3.5 text-sm font-medium text-gray-900\">{{ . }}</div>\n                              </a>\n                            </li>\n                            {{/diets}}\n                            {{#occasions}}\n                            <li class=\"inline\">\n                              <a href=\"#\" class=\"relative inline-flex items-center rounded-full border border-gray-300 px-3 py-0.5\">\n                                <div class=\"absolute flex-shrink-0 flex items-center justify-center\">\n                                  <span class=\"h-1.5 w-1.5 rounded-full bg-blue-500\" aria-hidden=\"true\"></span>\n                                </div>\n                                <div class=\"ml-3.5 text-sm font-medium text-gray-900\">{{ . }}</div>\n                              </a>\n                            </li>\n                            {{/occasions}}\n                          </ul>\n                        </div>\n                        \n                        <div class=\"pt-3\">\n                            <h2 class=\"text-sm font-medium text-gray-500\">Nutrition Info</h2>  \n                            <div class=\"mt-2 mb-2 grid grid-cols-1 gap-1\">\n                                <img src=\"/nutrition-label?ref={{id}}\" />\n                            </div>\n                        </div>\n                        \n                        <div class=\"pt-3\">\n                            <h2 class=\"text-sm font-medium text-gray-500\">Taste Info</h2>  \n                            <div class=\"mt-2 mb-2 grid grid-cols-1 gap-1\">\n                                <img src=\"/taste-profile?ref={{id}}\" />\n                            </div>\n                        </div>\n                        \n                        \n                      </div>\n                    </aside>\n                    \n                    <div class=\"py-3 xl:pt-6 xl:pb-0\">\n                      <h2 class=\"sr-only\">Description</h2>\n                      <div class=\"prose max-w-none\">\n                        <p>{{{ summary }}}</p>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n                <section aria-labelledby=\"activity-title\" class=\"mt-8 xl:mt-10\">\n                  <div>\n                    <div class=\"divide-y divide-gray-200\">\n                      <div class=\"pb-4\">\n                        <h2 id=\"activity-title\" class=\"text-lg font-medium text-gray-900\">Instructions</h2>\n                      </div>\n                      <div class=\"pt-6\">\n                        <p>{{{ instructions }}}</p>\n                      </div>\n                    </div>\n                  </div>\n                </section>\n                <section aria-labelledby=\"activity-title\" class=\"mt-8 xl:mt-10\">\n                    <div>\n                        <div class=\"divide-y divide-gray-200\">\n                          <div class=\"pb-4\">\n                            <h2 id=\"activity-title\" class=\"text-lg font-medium text-gray-900\">Steps</h2>\n                          </div>\n                        <div class=\"pt-6\">\n                            <div class=\"flow-root\">\n                                {{#analyzedInstructions}}\n                                {{#name}}\n                                <div class=\"pb-4\">\n                                    <h3 id=\"activity-title\" class=\"text-lg font-medium text-gray-900\">{{name}}</h3>\n                                </div>\n                                {{/name}}\n                                <ul role=\"list\" class=\"-mb-8\">\n                                    {{#steps}}\n                                    <li>\n                                      <div class=\"relative pb-8\">\n                                        <span class=\"absolute top-5 left-5 -ml-px h-full w-0.5 bg-gray-200\" aria-hidden=\"true\"></span>\n                                        <div class=\"relative flex items-start space-x-3\">\n                                          <div class=\"relative\">\n                                            <div class=\"h-10 w-10 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-white\" >\n                                                <span class=\"text-white font-bold\">{{number}}</span>\n                                            </div>\n                                          </div>\n                                          <div class=\"min-w-0 flex-1 p-3 border-1 rounded-md bg-[#fffbe9]\">\n                                            <div>\n                                              <p class=\"mt-0.5 text-sm text-gray-500\">Step {{number}}</p>\n                                            </div>\n                                            <div class=\"mt-2 text-sm text-gray-700\">\n                                              <p>{{step}}</p>\n                                            </div>\n                                            <div class=\"mt-2 text-sm grid grid-cols-1 gap-1 md:grid-cols-2  md:gap-3\">\n                                                {{#ingredients}}\n                                                    <div class=\"flex items-center space-x-3 bg-white border-1 rounded-sm p-2\">\n                                                        <div class=\"flex-shrink-0\">\n                                                          <img class=\"h-10 w-10 rounded-md\" src=\"https://spoonacular.com/cdn/ingredients_100x100/{{image}}\" alt=\"{{name}}\">\n                                                        </div>\n                                                        <div class=\"text-sm font-medium text-gray-900\">\n                                                            <span class=\"capitalize font-medium text-gray-900\">{{ localizedName }}</span>\n                                                        </div>\n                                                    </div>\n                                                {{/ingredients}}    \n                                            </div>\n                                          </div>\n                                        </div>\n                                      </div>\n                                    </li>\n                                    {{/steps}}\n                                    <li>\n                                      <div class=\"relative pb-8\">\n                                        <div class=\"relative flex items-start space-x-3\">\n                                          <div class=\"relative\">\n                                            <div class=\"h-10 w-10 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-white\" >\n                                                <span class=\"text-white font-bold\">{{count}}</span>\n                                            </div>\n                                          </div>\n                                          <div class=\"min-w-0 flex-1 p-3 border-1 rounded-md bg-[#fffbe9]\">\n                                            <div>\n                                              <p class=\"mt-0.5 text-sm text-gray-500\">Step {{count}}</p>\n                                            </div>\n                                            <div class=\"mt-2 text-sm text-gray-700\">\n                                              <p>!Enjoy your {{ title }}</p>\n                                            </div>\n                                          </div>\n                                        </div>\n                                      </div>\n                                    </li>\n                                </ul>\n                                {{/analyzedInstructions}}\n                            </div>\n                        </div>\n                    </div>\n                </section>\n              </div>\n              \n              <aside class=\"hidden xl:block xl:pl-8\">\n                <h2 class=\"sr-only\">Details</h2>\n                <div class=\"space-y-5\">\n                    <div class=\"flex items-center space-x-2\">\n                      <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-5 w-5\" viewBox=\"0 0 20 20\" fill=\"currentColor\">\n                          <path fill-rule=\"evenodd\" d=\"M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z\" clip-rule=\"evenodd\" />\n                        </svg>\n                      <span class=\"text-sm font-medium\">Prep In {{ preparationMinutes }} Mins</span>\n                    </div>\n                    <div class=\"flex items-center space-x-2\">\n                      <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-5 w-5\" viewBox=\"0 0 20 20\" fill=\"currentColor\">\n                          <path fill-rule=\"evenodd\" d=\"M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z\" clip-rule=\"evenodd\" />\n                        </svg>\n                      <span class=\"text-sm font-medium\">Cook Time {{ cookingMinutes }} Mins</span>\n                    </div>\n                  <div class=\"flex items-center space-x-2\">\n                      <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-5 w-5\" viewBox=\"0 0 20 20\" fill=\"currentColor\">\n  <path fill-rule=\"evenodd\" d=\"M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z\" clip-rule=\"evenodd\" />\n</svg>\n                      <span class=\"text-sm font-medium\">Ready In {{ readyInMinutes }} Mins</span>\n                    </div>\n                    <div class=\"flex items-center space-x-2\">\n                      <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2\">\n                          <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z\" />\n                        </svg>\n                      <span class=\"text-gray-900 text-sm font-medium\">{{ extendedIngredients.length }} Ingredients</span>\n                    </div>\n                    <div class=\"flex items-center space-x-2\">\n                        <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2\">\n                            <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z\" />\n                        </svg>\n                        <span class=\"text-gray-900 text-sm font-medium\">Serves <span>{{ servings }}</span></span>\n                    </div>\n                </div>\n                <div class=\"mt-6 border-t border-gray-200 py-6 space-y-8\">\n                  <div>\n                      <h2 class=\"text-sm font-medium text-gray-500\">Ingredients</h2>\n                      <ul role=\"list\" class=\"mt-3 space-y-3 min-w-full\">\n                        {{#extendedIngredients }}\n                            <li class=\"flex justify-start min-w-full\">\n                              <a href=\"/ingredient/{{id}}\" class=\"flex items-center space-x-3\">\n                                <div class=\"flex-shrink-0\">\n                                  <img class=\"h-10 w-10 rounded-md\" src=\"https://spoonacular.com/cdn/ingredients_100x100/{{image}}\" alt=\"{{name}}\">\n                                </div>\n                                <div class=\"text-sm font-medium text-gray-900\"><span class=\"font-bold text-black\">{{ measures.us.amount }} {{ measures.us.unitShort }}</span> <span class=\"capitalize font-medium text-gray-900\">{{ nameClean }}</span></div>\n                              </a>\n                            </li>\n                        {{/extendedIngredients }}\n                      </ul>\n                    </div>\n                  <div>\n                    <h2 class=\"text-sm font-medium text-gray-500\">Tags</h2>\n                    <ul role=\"list\" class=\"mt-2 leading-8\">\n                      {{#cuisine}}\n                        <li class=\"inline\">\n                          <a href=\"#\" class=\"relative inline-flex items-center rounded-full border border-gray-300 px-3 py-0.5\">\n                            <div class=\"absolute flex-shrink-0 flex items-center justify-center\">\n                              <span class=\"h-1.5 w-1.5 rounded-full bg-red-500\" aria-hidden=\"true\"></span>\n                            </div>\n                            <div class=\"ml-3.5 text-sm font-medium text-gray-900\">{{ . }}</div>\n                          </a>\n                        </li>\n                        {{/cuisine}}\n                        {{#dishTypes}}\n                        <li class=\"inline\">\n                          <a href=\"#\" class=\"relative inline-flex items-center rounded-full border border-gray-300 px-3 py-0.5\">\n                            <div class=\"absolute flex-shrink-0 flex items-center justify-center\">\n                              <span class=\"h-1.5 w-1.5 rounded-full bg-yellow-500\" aria-hidden=\"true\"></span>\n                            </div>\n                            <div class=\"ml-3.5 text-sm font-medium text-gray-900\">{{ . }}</div>\n                          </a>\n                        </li>\n                        {{/dishTypes}}\n                        {{#diets}}\n                        <li class=\"inline\">\n                          <a href=\"#\" class=\"relative inline-flex items-center rounded-full border border-gray-300 px-3 py-0.5\">\n                            <div class=\"absolute flex-shrink-0 flex items-center justify-center\">\n                              <span class=\"h-1.5 w-1.5 rounded-full bg-cyan-500\" aria-hidden=\"true\"></span>\n                            </div>\n                            <div class=\"ml-3.5 text-sm font-medium text-gray-900\">{{ . }}</div>\n                          </a>\n                        </li>\n                        {{/diets}}\n                        {{#occasions}}\n                        <li class=\"inline\">\n                          <a href=\"#\" class=\"relative inline-flex items-center rounded-full border border-gray-300 px-3 py-0.5\">\n                            <div class=\"absolute flex-shrink-0 flex items-center justify-center\">\n                              <span class=\"h-1.5 w-1.5 rounded-full bg-blue-500\" aria-hidden=\"true\"></span>\n                            </div>\n                            <div class=\"ml-3.5 text-sm font-medium text-gray-900\">{{ . }}</div>\n                          </a>\n                        </li>\n                        {{/occasions}}\n                    </ul>\n                    </div>\n                    <div class=\"pt-3\">\n                        <h2 class=\"text-sm font-medium text-gray-500\">Nutrition Info</h2>  \n                        <div class=\"mt-2 mb-2 grid grid-cols-1 gap-1\">\n                            <img src=\"/nutrition-label?ref={{id}}\" />\n                        </div>\n                    </div>\n                    \n                    <div class=\"pt-3\">\n                        <h2 class=\"text-sm font-medium text-gray-500\">Taste Info</h2>  \n                        <div class=\"mt-2 mb-2 grid grid-cols-1 gap-1\">\n                            <img src=\"/taste-profile?ref={{id}}\" />\n                        </div>\n                    </div>\n                        \n                </div>\n              </aside>\n              \n            </div>\n            {{/recipe}}\n            {{^recipe}}No Recipe Sorry{{/recipe}}\n        </div>\n    </main>\n</div>",
+        "output": "str",
+        "x": 550,
+        "y": 280,
+        "wires": [
+            [
+                "d2418198ab5dae5c"
+            ]
+        ]
+    },
+    {
+        "id": "c592271fda549e9b",
+        "type": "template",
+        "z": "eda0173252eba302",
+        "name": "nav",
+        "field": "template.nav",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "\n<div \n    @keydown.window.escape=\"open = false\" \n    class=\"min-h-full flex\"\n>\n    \n        <div \n            x-show=\"open\" \n            class=\"relative z-40 lg:hidden\" \n            x-description=\"Off-canvas menu for mobile, show/hide based on off-canvas menu state.\" \n            x-ref=\"dialog\" \n            aria-modal=\"true\"\n        >\n        \n        <div \n            x-show=\"open\" \n            x-transition:enter=\"transition-opacity ease-linear duration-300\" \n            x-transition:enter-start=\"opacity-0\" \n            x-transition:enter-end=\"opacity-100\" \n            x-transition:leave=\"transition-opacity ease-linear duration-300\" \n            x-transition:leave-start=\"opacity-100\" \n            x-transition:leave-end=\"opacity-0\" \n            x-description=\"Off-canvas menu backdrop, show/hide based on off-canvas menu state.\" \n            class=\"fixed inset-0 bg-gray-600 bg-opacity-75\"\n        ></div>\n    \n    <div class=\"fixed inset-0 flex z-40\">\n      \n    <div \n        x-show=\"open\" \n        x-transition:enter=\"transition ease-in-out duration-300 transform\" \n        x-transition:enter-start=\"-translate-x-full\" \n        x-transition:enter-end=\"translate-x-0\" \n        x-transition:leave=\"transition ease-in-out duration-300 transform\" \n        x-transition:leave-start=\"translate-x-0\" \n        x-transition:leave-end=\"-translate-x-full\" \n        x-description=\"Off-canvas menu, show/hide based on off-canvas menu state.\" \n        class=\"relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-gray-800\" \n        @click.away=\"open = false\"\n    >\n              \n        <div \n            x-show=\"open\" \n            x-transition:enter=\"ease-in-out duration-300\" \n            x-transition:enter-start=\"opacity-0\" \n            x-transition:enter-end=\"opacity-100\" \n            x-transition:leave=\"ease-in-out duration-300\" \n            x-transition:leave-start=\"opacity-100\" \n            x-transition:leave-end=\"opacity-0\" \n            x-description=\"Close button, show/hide based on off-canvas menu state.\" \n            class=\"absolute top-0 right-0 -mr-12 pt-2\"\n        >\n            <button type=\"button\" \n                class=\"ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white\" \n                @click=\"open = false\"\n            >\n                <span class=\"sr-only\">Close sidebar</span>\n                <svg \n                    class=\"h-6 w-6 text-white\" \n                    x-description=\"Heroicon name: outline/x\" \n                    xmlns=\"http://www.w3.org/2000/svg\" \n                    fill=\"none\" \n                    viewBox=\"0 0 24 24\" \n                    stroke-width=\"2\" \n                    stroke=\"currentColor\" \n                    aria-hidden=\"true\"\n                >\n                    <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M6 18L18 6M6 6l12 12\"></path>\n                </svg>\n            </button>\n        </div>\n    \n        <div class=\"flex-shrink-0 flex items-center px-4\">\n          <img class=\"h-8 w-auto\" src=\"https://tailwindui.com/img/logos/workflow-logo-rose-500-mark-white-text.svg\" alt=\"Workflow\">\n        </div>\n        <div class=\"mt-5 flex-1 h-0 overflow-y-auto\">\n          <nav class=\"px-2\">\n            <div class=\"space-y-1\">\n              <!-- Current: \"bg-gray-900 text-white\", Default: \"text-gray-300 hover:bg-gray-700 hover:text-white\" -->\n              <a href=\"/recipes/random\" class=\"bg-gray-900 text-white group flex items-center px-2 py-2 text-base font-medium rounded-md\" aria-current=\"page\">\n                <svg class=\"text-gray-300 mr-4 flex-shrink-0 h-6 w-6\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" aria-hidden=\"true\">\n                  <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6\" />\n                </svg>\n                Random Recipe\n              </a>\n            </div>\n            <div class=\"space-y-1\">\n              <!-- Current: \"bg-gray-900 text-white\", Default: \"text-gray-300 hover:bg-gray-700 hover:text-white\" -->\n              <a href=\"/asset-search\" class=\"bg-gray-900 text-white group flex items-center px-2 py-2 text-base font-medium rounded-md\" aria-current=\"page\">\n                <svg class=\"text-gray-300 mr-4 flex-shrink-0 h-6 w-6\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" aria-hidden=\"true\">\n                  <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6\" />\n                </svg>\n                Asset Search\n              </a>\n            </div>\n            {{!--<div class=\"mt-10\">--}}\n            {{!--  <p class=\"px-2 text-xs font-semibold text-gray-400 uppercase tracking-wider\">Projects</p>--}}\n            {{!--  <div class=\"mt-2 space-y-1\">--}}\n            {{!--    <a href=\"#\" class=\"flex items-center text-gray-300 hover:bg-gray-700 hover:text-white px-2 py-2 text-base font-medium rounded-md\">--}}\n            {{!--      <span class=\"truncate\">GraphQL API</span>--}}\n            {{!--    </a>--}}\n    \n            {{!--    <a href=\"#\" class=\"flex items-center text-gray-300 hover:bg-gray-700 hover:text-white px-2 py-2 text-base font-medium rounded-md\">--}}\n            {{!--      <span class=\"truncate\">iOS App</span>--}}\n            {{!--    </a>--}}\n    \n            {{!--    <a href=\"#\" class=\"flex items-center text-gray-300 hover:bg-gray-700 hover:text-white px-2 py-2 text-base font-medium rounded-md\">--}}\n            {{!--      <span class=\"truncate\">Marketing Site Redesign</span>--}}\n            {{!--    </a>--}}\n    \n            {{!--    <a href=\"#\" class=\"flex items-center text-gray-300 hover:bg-gray-700 hover:text-white px-2 py-2 text-base font-medium rounded-md\">--}}\n            {{!--      <span class=\"truncate\">Customer Portal</span>--}}\n            {{!--    </a>--}}\n            {{!--  </div>--}}\n            {{!--</div>--}}\n          </nav>\n        </div>\n      </div>\n    \n      <div class=\"flex-shrink-0 w-14\" aria-hidden=\"true\">\n        <!-- Dummy element to force sidebar to shrink to fit close icon -->\n      </div>\n    </div>\n</div>\n    \n<!-- Static sidebar for desktop -->\n<div class=\"hidden lg:flex lg:w-64 lg:fixed lg:inset-y-0\">\n    <!-- Sidebar component, swap this element with another sidebar if you like -->\n    <div class=\"flex-1 flex flex-col min-h-0\">\n      <div class=\"flex items-center h-16 flex-shrink-0 px-4 bg-gray-900\">\n        <img class=\"h-8 w-auto\" src=\"https://tailwindui.com/img/logos/workflow-logo-rose-500-mark-white-text.svg\" alt=\"Workflow\">\n      </div>\n      <div class=\"flex-1 flex flex-col overflow-y-auto bg-gray-800\">\n        <nav class=\"flex-1 px-2 py-4\">\n          <div class=\"space-y-1\">\n              <!-- Current: \"bg-gray-900 text-white\", Default: \"text-gray-300 hover:bg-gray-700 hover:text-white\" -->\n              <a href=\"/recipes/random\" class=\"bg-gray-900 text-white group flex items-center px-2 py-2 text-base font-medium rounded-md\" aria-current=\"page\">\n                <svg class=\"text-gray-300 mr-4 flex-shrink-0 h-6 w-6\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" aria-hidden=\"true\">\n                  <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6\" />\n                </svg>\n                Random Recipe\n              </a>\n            </div>\n            <div class=\"space-y-1\">\n              <!-- Current: \"bg-gray-900 text-white\", Default: \"text-gray-300 hover:bg-gray-700 hover:text-white\" -->\n              <a href=\"/asset-search\" class=\"bg-gray-900 text-white group flex items-center px-2 py-2 text-base font-medium rounded-md\" aria-current=\"page\">\n                <svg class=\"text-gray-300 mr-4 flex-shrink-0 h-6 w-6\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" aria-hidden=\"true\">\n                  <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6\" />\n                </svg>\n                Asset Search\n              </a>\n            </div>\n          {{!--<div class=\"mt-10\">--}}\n          {{!--  <p class=\"px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider\">Projects</p>--}}\n          {{!--  <div class=\"mt-2 space-y-1\">--}}\n          {{!--    <a href=\"#\" class=\"group flex items-center px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:text-white hover:bg-gray-700\">--}}\n          {{!--      <span class=\"truncate\"> GraphQL API </span>--}}\n          {{!--    </a>--}}\n    \n          {{!--    <a href=\"#\" class=\"group flex items-center px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:text-white hover:bg-gray-700\">--}}\n          {{!--      <span class=\"truncate\"> iOS App </span>--}}\n          {{!--    </a>--}}\n    \n          {{!--    <a href=\"#\" class=\"group flex items-center px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:text-white hover:bg-gray-700\">--}}\n          {{!--      <span class=\"truncate\"> Marketing Site Redesign </span>--}}\n          {{!--    </a>--}}\n    \n          {{!--    <a href=\"#\" class=\"group flex items-center px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:text-white hover:bg-gray-700\">--}}\n          {{!--      <span class=\"truncate\"> Customer Portal </span>--}}\n          {{!--    </a>--}}\n          {{!--  </div>--}}\n          {{!--</div>--}}\n        </nav>\n      </div>\n    </div>\n</div>\n</div>",
+        "output": "str",
+        "x": 1030,
+        "y": 60,
+        "wires": [
+            [
+                "30d02f6b0742262c"
+            ]
+        ]
+    },
+    {
+        "id": "30d02f6b0742262c",
+        "type": "template",
+        "z": "eda0173252eba302",
+        "name": "head",
+        "field": "template.head",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n\n<title>Bracken & Sage</title>\n<meta name=\"description\" content=\"Node-RED uibuilder - Blank template\">\n<link rel=\"icon\" href=\"./images/node-blue.ico\">\n<script src=\"//cdn.tailwindcss.com\"></script>\n<!-- Your own CSS -->\n<link type=\"text/css\" rel=\"stylesheet\" href=\"./index.css\" media=\"all\">\n<style>\n    @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');\n\n    .font-family-karla {\n        font-family: karla;\n    }\n</style>\n<!-- Font Awesome -->\n<script src=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js\" integrity=\"sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=\" crossorigin=\"anonymous\"></script>\n<script src=\"//unpkg.com/axios/dist/axios.min.js\" defer></script>\n<script src=\"https://cdn.jsdelivr.net/npm/chart.js\" defer></script>\n",
+        "output": "str",
+        "x": 1030,
+        "y": 160,
+        "wires": [
+            [
+                "05b39102a5f84f91"
+            ]
+        ]
+    },
+    {
+        "id": "05b39102a5f84f91",
+        "type": "template",
+        "z": "eda0173252eba302",
+        "name": "body",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!doctype html>\n<html lang=\"en\">\n    <head>\n        {{{template.head}}}\n    </head>\n    <body class=\"uib bg-white font-family-karla\">\n        \n        <div x-data=\"{ open: false }\" class=\"min-h-full flex\">\n            {{{template.nav}}}\n            {{{template.body}}}\n        </div>\n        <script src=\"//unpkg.com/alpinejs\" defer></script>\n    </body>\n</html>",
+        "output": "str",
+        "x": 1030,
+        "y": 260,
+        "wires": [
+            [
+                "9e5aba1357db8bb2"
+            ]
+        ]
+    },
+    {
+        "id": "e2ad2692fdce2584",
+        "type": "link in",
+        "z": "eda0173252eba302",
+        "name": "buildPageTemplate",
+        "links": [
+            "d2418198ab5dae5c"
+        ],
+        "x": 915,
+        "y": 60,
+        "wires": [
+            [
+                "c592271fda549e9b"
+            ]
+        ]
+    },
+    {
+        "id": "a0d5b9fd90f43c92",
+        "type": "link call",
+        "z": "eda0173252eba302",
+        "name": "",
+        "links": [
+            "0716612bf3fb99e4"
+        ],
+        "timeout": "30",
+        "x": 370,
+        "y": 280,
+        "wires": [
+            [
+                "61c19bf243f205b0"
+            ]
+        ]
+    },
+    {
+        "id": "f64f5ae21b685afe",
+        "type": "link call",
+        "z": "eda0173252eba302",
+        "name": "",
+        "links": [
+            "d23eb0b4294ed241"
+        ],
+        "timeout": "30",
+        "x": 370,
+        "y": 440,
+        "wires": [
+            [
+                "9e5aba1357db8bb2"
+            ]
+        ]
+    },
+    {
+        "id": "7c604727b21b92cb",
+        "type": "link call",
+        "z": "eda0173252eba302",
+        "name": "",
+        "links": [
+            "b57c9147bda1abf5"
+        ],
+        "timeout": "30",
+        "x": 360,
+        "y": 500,
+        "wires": [
+            [
+                "9e5aba1357db8bb2"
+            ]
+        ]
+    },
+    {
+        "id": "856a964c1e94c225",
+        "type": "link call",
+        "z": "eda0173252eba302",
+        "name": "",
+        "links": [
+            "85090d0ae0b8d45f"
+        ],
+        "timeout": "30",
+        "x": 360,
+        "y": 560,
+        "wires": [
+            [
+                "9e5aba1357db8bb2"
+            ]
+        ]
+    },
+    {
+        "id": "d2418198ab5dae5c",
+        "type": "link out",
+        "z": "eda0173252eba302",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "e2ad2692fdce2584"
+        ],
+        "x": 855,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "69ddfc0877d68c5a",
+        "type": "template",
+        "z": "eda0173252eba302",
+        "name": "Search Page",
+        "field": "template.body",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<div class=\"max-w-5xl mx-auto px-4 sm:px-6 lg:px-8\">\n    <form class=\"space-y-6\" name=\"image-search\" action\"/bns/asset-search\" method=\"GET\">\n        <label for=\"search\" class=\"block text-sm font-medium text-gray-700\">Search image</label>\n        <div class=\"mt-1 flex rounded-md shadow-md\">\n            <div class=\"relative flex items-stretch flex-grow focus-within:z-10\">\n                <input type=\"text\" name=\"search\" id=\"search\" class=\"focus:ring-indigo-500 focus:border-indigo-500 block w-full rounded-none rounded-l-md pl-10 sm:text-sm border-gray-300\" placeholder=\"Stars\">\n            </div>\n            <button type=\"submit\" class=\"-ml-px relative inline-flex items-center space-x-2 px-4 py-2 border border-gray-300 text-sm font-medium rounded-r-md text-gray-700 bg-gray-50 hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500\">\n                <span>Search</span>\n            </button>\n        </div>\n    </form>\n</div>",
+        "output": "str",
+        "x": 570,
+        "y": 340,
+        "wires": [
+            [
+                "d2418198ab5dae5c"
+            ]
+        ]
+    },
+    {
+        "id": "c7c51293a9e6572a",
+        "type": "http in",
+        "z": "eda0173252eba302",
+        "name": "",
+        "url": "/asset-search",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 340,
+        "wires": [
+            [
+                "a917ed92ce2b98ea"
+            ]
+        ]
+    },
+    {
+        "id": "a917ed92ce2b98ea",
+        "type": "link call",
+        "z": "eda0173252eba302",
+        "name": "",
+        "links": [
+            "ba6883c5b4838c5d"
+        ],
+        "timeout": "30",
+        "x": 360,
+        "y": 340,
+        "wires": [
+            [
+                "69ddfc0877d68c5a"
+            ]
+        ]
+    },
+    {
+        "id": "19cb32df1ad0321d",
+        "type": "link call",
+        "z": "eda0173252eba302",
+        "name": "",
+        "links": [
+            "2075fb73594d9f5c"
+        ],
+        "timeout": "30",
+        "x": 340,
+        "y": 100,
+        "wires": [
+            [
+                "51d2de298ee82bd3",
+                "c6f95b4aea92c21c"
+            ]
+        ]
+    },
+    {
+        "id": "c6f95b4aea92c21c",
+        "type": "debug",
+        "z": "eda0173252eba302",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "d581fddec56d9a75",
+        "type": "comment",
+        "z": "eda0173252eba302",
+        "name": "Home Page",
+        "info": "",
+        "x": 110,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "6c51827ebe64731e",
+        "type": "debug",
+        "z": "09c370f1b9ff240d",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "928c4d6daeb352ec",
+        "type": "switch",
+        "z": "09c370f1b9ff240d",
+        "name": "",
+        "property": "article.description",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "regex",
+                "v": "trad",
+                "vt": "str",
+                "case": true
+            },
+            {
+                "t": "regex",
+                "v": "traditional",
+                "vt": "str",
+                "case": true
+            },
+            {
+                "t": "regex",
+                "v": "indoor",
+                "vt": "str",
+                "case": true
+            },
+            {
+                "t": "regex",
+                "v": "sport",
+                "vt": "str",
+                "case": true
+            },
+            {
+                "t": "regex",
+                "v": "ice",
+                "vt": "str",
+                "case": true
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 6,
+        "x": 470,
+        "y": 60,
+        "wires": [
+            [
+                "6c51827ebe64731e",
+                "ab166e94710b742d"
+            ],
+            [
+                "6c51827ebe64731e",
+                "ab166e94710b742d"
+            ],
+            [
+                "6c51827ebe64731e",
+                "ab166e94710b742d"
+            ],
+            [
+                "6c51827ebe64731e",
+                "ab166e94710b742d"
+            ],
+            [
+                "6c51827ebe64731e",
+                "ab166e94710b742d"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "ab166e94710b742d",
+        "type": "change",
+        "z": "09c370f1b9ff240d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "article.description",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "article.title",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "from",
+                "pt": "msg",
+                "to": "\"RSS Alert\" <rss-alert@noreply.com>",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 120,
+        "wires": [
+            [
+                "6c51827ebe64731e"
+            ]
+        ]
+    },
+    {
+        "id": "d697d22b9fd1d201",
+        "type": "feedparse",
+        "z": "09c370f1b9ff240d",
+        "d": true,
+        "name": "",
+        "url": "https://www.climbing.com/news/feed/",
+        "interval": "1440",
+        "ignorefirst": false,
+        "x": 210,
+        "y": 60,
+        "wires": [
+            [
+                "928c4d6daeb352ec"
+            ]
+        ]
+    },
+    {
+        "id": "a735509f936844c8",
+        "type": "http request",
+        "z": "f2a192afe193e52c",
+        "name": "Xano API GET",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 280,
+        "y": 80,
+        "wires": [
+            [
+                "eeba3a27cb07e25a"
+            ]
+        ]
+    },
+    {
+        "id": "2075fb73594d9f5c",
+        "type": "link in",
+        "z": "f2a192afe193e52c",
+        "name": "Xano_API_GET",
+        "links": [],
+        "x": 55,
+        "y": 80,
+        "wires": [
+            [
+                "a735509f936844c8"
+            ]
+        ]
+    },
+    {
+        "id": "eeba3a27cb07e25a",
+        "type": "link out",
+        "z": "f2a192afe193e52c",
+        "name": "",
+        "mode": "return",
+        "links": [],
+        "x": 515,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "34ad9b4195a5d899",
+        "type": "http request",
+        "z": "f2a192afe193e52c",
+        "name": "Xano API POST",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 280,
+        "y": 140,
+        "wires": [
+            [
+                "f62879d5d4b5fafa"
+            ]
+        ]
+    },
+    {
+        "id": "7e80a8d6893b4bd0",
+        "type": "link in",
+        "z": "f2a192afe193e52c",
+        "name": "Xano_API_POST",
+        "links": [],
+        "x": 55,
+        "y": 140,
+        "wires": [
+            [
+                "34ad9b4195a5d899"
+            ]
+        ]
+    },
+    {
+        "id": "f62879d5d4b5fafa",
+        "type": "link out",
+        "z": "f2a192afe193e52c",
+        "name": "",
+        "mode": "return",
+        "links": [],
+        "x": 515,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "a60c947fea3584ee",
+        "type": "inject",
+        "z": "eb82fe103d280263",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 120,
+        "wires": [
+            [
+                "0e293c2dd32b0c10"
+            ]
+        ]
+    },
+    {
+        "id": "0e293c2dd32b0c10",
+        "type": "http request",
+        "z": "eb82fe103d280263",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.pexels.com/v1/search?query=forest",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "bearer",
+        "senderr": false,
+        "x": 330,
+        "y": 180,
+        "wires": [
+            [
+                "af7a6791e3846493",
+                "46d5416d0ec6a936"
+            ]
+        ]
+    },
+    {
+        "id": "af7a6791e3846493",
+        "type": "debug",
+        "z": "eb82fe103d280263",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "ba6883c5b4838c5d",
+        "type": "link in",
+        "z": "eb82fe103d280263",
+        "name": "getAssetSearch",
+        "links": [],
+        "x": 75,
+        "y": 220,
+        "wires": [
+            [
+                "0e293c2dd32b0c10"
+            ]
+        ]
+    },
+    {
+        "id": "46d5416d0ec6a936",
+        "type": "link out",
+        "z": "eb82fe103d280263",
+        "name": "",
+        "mode": "return",
+        "links": [],
+        "x": 505,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "24799294aa79387e",
+        "type": "inject",
+        "z": "c77901ebf2b7693e",
+        "name": "",
+        "props": [
+            {
+                "p": "tags",
+                "v": "vegan glutenFree",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 90,
+        "y": 140,
+        "wires": [
+            [
+                "058f390bcd35faa6"
+            ]
+        ]
+    },
+    {
+        "id": "0fb70dae31634e64",
+        "type": "http request",
+        "z": "c77901ebf2b7693e",
+        "name": "Random Recipe",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "query",
+        "url": "https://api.spoonacular.com/recipes/random?limitLicense=true&number=1",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 700,
+        "y": 200,
+        "wires": [
+            [
+                "be1d7b0c3d46e1a4"
+            ]
+        ]
+    },
+    {
+        "id": "14d6ac191bcdd4b0",
+        "type": "function",
+        "z": "c77901ebf2b7693e",
+        "name": "Make Tags and Array",
+        "func": "\nmsg.tags = [];\nif(msg.req.query.tags){\n    msg.tags = msg.req.query.tags.split(\",\")\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 200,
+        "wires": [
+            [
+                "0fb70dae31634e64"
+            ]
+        ]
+    },
+    {
+        "id": "be1d7b0c3d46e1a4",
+        "type": "function",
+        "z": "c77901ebf2b7693e",
+        "name": "Add Extra Instructions Count",
+        "func": "msg.recipe = msg.payload.recipes[0];\nmsg.recipe.analyzedInstructions.forEach(x => {\n   x.count = x.steps.length + 1;\n});\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 200,
+        "wires": [
+            [
+                "531fa2f4726c5145"
+            ]
+        ]
+    },
+    {
+        "id": "43d531bd688da6a2",
+        "type": "http request",
+        "z": "c77901ebf2b7693e",
+        "name": "nutritionLabel",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "https://api.spoonacular.com/recipes/{{req.query.ref}}/nutritionLabel.png",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 460,
+        "y": 260,
+        "wires": [
+            [
+                "0a2adcbda8804e5b"
+            ]
+        ]
+    },
+    {
+        "id": "03559d2ecded553a",
+        "type": "http request",
+        "z": "c77901ebf2b7693e",
+        "name": "tasteWidget",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "https://api.spoonacular.com/recipes/{{req.query.ref}}/tasteWidget.png?normalize=false&rgb=75%2C192%2C192",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 450,
+        "y": 380,
+        "wires": [
+            [
+                "5e5f71348851b283",
+                "0a2adcbda8804e5b"
+            ]
+        ]
+    },
+    {
+        "id": "32bd667a6a5937ea",
+        "type": "http request",
+        "z": "c77901ebf2b7693e",
+        "name": "Recipe Card",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.spoonacular.com/recipes/{{req.query.ref}}/card",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 450,
+        "y": 320,
+        "wires": [
+            [
+                "0a2adcbda8804e5b"
+            ]
+        ]
+    },
+    {
+        "id": "5e5f71348851b283",
+        "type": "debug",
+        "z": "c77901ebf2b7693e",
+        "name": "Taste Profile",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "2d7a3efea761d800",
+        "type": "link call",
+        "z": "c77901ebf2b7693e",
+        "name": "Tools - Set Header",
+        "links": [
+            "6fc82eb4f16ad148"
+        ],
+        "timeout": "30",
+        "x": 230,
+        "y": 260,
+        "wires": [
+            [
+                "43d531bd688da6a2"
+            ]
+        ]
+    },
+    {
+        "id": "af6b235eadb8a72b",
+        "type": "link call",
+        "z": "c77901ebf2b7693e",
+        "name": "Tools - Set Header",
+        "links": [
+            "6fc82eb4f16ad148"
+        ],
+        "timeout": "30",
+        "x": 230,
+        "y": 320,
+        "wires": [
+            [
+                "32bd667a6a5937ea"
+            ]
+        ]
+    },
+    {
+        "id": "11e4ee78996fd4ef",
+        "type": "link call",
+        "z": "c77901ebf2b7693e",
+        "name": "Tools - Set Header",
+        "links": [
+            "6fc82eb4f16ad148"
+        ],
+        "timeout": "30",
+        "x": 230,
+        "y": 380,
+        "wires": [
+            [
+                "03559d2ecded553a"
+            ]
+        ]
+    },
+    {
+        "id": "058f390bcd35faa6",
+        "type": "link call",
+        "z": "c77901ebf2b7693e",
+        "name": "Tools - Set Header",
+        "links": [
+            "6fc82eb4f16ad148"
+        ],
+        "timeout": "30",
+        "x": 230,
+        "y": 200,
+        "wires": [
+            [
+                "14d6ac191bcdd4b0"
+            ]
+        ]
+    },
+    {
+        "id": "0716612bf3fb99e4",
+        "type": "link in",
+        "z": "c77901ebf2b7693e",
+        "name": "getRandomRecipe",
+        "links": [],
+        "x": 45,
+        "y": 200,
+        "wires": [
+            [
+                "058f390bcd35faa6"
+            ]
+        ]
+    },
+    {
+        "id": "531fa2f4726c5145",
+        "type": "link out",
+        "z": "c77901ebf2b7693e",
+        "name": "",
+        "mode": "return",
+        "links": [],
+        "x": 1105,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "d23eb0b4294ed241",
+        "type": "link in",
+        "z": "c77901ebf2b7693e",
+        "name": "getNutritionLabel",
+        "links": [],
+        "x": 45,
+        "y": 260,
+        "wires": [
+            [
+                "2d7a3efea761d800"
+            ]
+        ]
+    },
+    {
+        "id": "b57c9147bda1abf5",
+        "type": "link in",
+        "z": "c77901ebf2b7693e",
+        "name": "getRecipeCard",
+        "links": [],
+        "x": 45,
+        "y": 320,
+        "wires": [
+            [
+                "af6b235eadb8a72b"
+            ]
+        ]
+    },
+    {
+        "id": "85090d0ae0b8d45f",
+        "type": "link in",
+        "z": "c77901ebf2b7693e",
+        "name": "getTasteWidget",
+        "links": [],
+        "x": 45,
+        "y": 380,
+        "wires": [
+            [
+                "11e4ee78996fd4ef"
+            ]
+        ]
+    },
+    {
+        "id": "0a2adcbda8804e5b",
+        "type": "link out",
+        "z": "c77901ebf2b7693e",
+        "name": "",
+        "mode": "return",
+        "links": [],
+        "x": 665,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "640a8b30b7933873",
+        "type": "http in",
+        "z": "9c3a87363bc34709",
+        "name": "",
+        "url": "/hud",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 60,
+        "y": 140,
+        "wires": [
+            [
+                "d1b96d73c3bdc321"
+            ]
+        ]
+    },
+    {
+        "id": "d1b96d73c3bdc321",
+        "type": "change",
+        "z": "9c3a87363bc34709",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "payload.goto",
+                "pt": "msg",
+                "to": "https://entp.hud.gov/idapp/html/condlook.cfm",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 260,
+        "y": 40,
+        "wires": [
+            [
+                "7c0761d5d2104d4a"
+            ]
+        ]
+    },
+    {
+        "id": "e93ac4baede033bc",
+        "type": "debug",
+        "z": "9c3a87363bc34709",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1060,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "7346a8f6642fd8ea",
+        "type": "inject",
+        "z": "9c3a87363bc34709",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 80,
+        "y": 80,
+        "wires": [
+            [
+                "d1b96d73c3bdc321"
+            ]
+        ]
+    },
+    {
+        "id": "f04d4be3dc2e9668",
+        "type": "cheerio",
+        "z": "9c3a87363bc34709",
+        "name": "",
+        "tag": "tbody",
+        "ret": "object",
+        "as": "single",
+        "map": [
+            {
+                "search": "tr",
+                "ret": "html",
+                "replace": "row",
+                "attr": ""
+            }
+        ],
+        "xmlMode": true,
+        "decodeEntities": true,
+        "lowerCaseTags": false,
+        "lowerCaseAttributeNames": false,
+        "recognizeCDATA": false,
+        "recognizeSelfClosing": false,
+        "x": 250,
+        "y": 240,
+        "wires": [
+            [
+                "e93ac4baede033bc"
+            ]
+        ]
+    },
+    {
+        "id": "7c0761d5d2104d4a",
+        "type": "puppeteer-browser-launch",
+        "z": "9c3a87363bc34709",
+        "timeout": "30000",
+        "slowMo": 0,
+        "headless": true,
+        "debugport": 0,
+        "devtools": false,
+        "name": "",
+        "x": 420,
+        "y": 40,
+        "wires": [
+            [
+                "72a4fc9485d9d89d"
+            ]
+        ]
+    },
+    {
+        "id": "f148c8ed772b12bf",
+        "type": "puppeteer-browser-close",
+        "z": "9c3a87363bc34709",
+        "name": "",
+        "x": 1160,
+        "y": 120,
+        "wires": [
+            [
+                "e93ac4baede033bc",
+                "f04d4be3dc2e9668"
+            ]
+        ]
+    },
+    {
+        "id": "72a4fc9485d9d89d",
+        "type": "puppeteer-page-goto",
+        "z": "9c3a87363bc34709",
+        "name": "",
+        "url": "payload.goto",
+        "urltype": "msg",
+        "waitUntil": "networkidle0",
+        "x": 590,
+        "y": 40,
+        "wires": [
+            [
+                "817cdb09cd762616"
+            ]
+        ]
+    },
+    {
+        "id": "477baca15c688036",
+        "type": "puppeteer-page-click",
+        "z": "9c3a87363bc34709",
+        "selector": "#fluid > form > div > input[type=submit]:nth-child(2)",
+        "selectortype": "str",
+        "button": "left",
+        "clickCount": 1,
+        "delay": 0,
+        "name": "",
+        "x": 330,
+        "y": 120,
+        "wires": [
+            [
+                "993929de357e3e51"
+            ]
+        ]
+    },
+    {
+        "id": "817cdb09cd762616",
+        "type": "puppeteer-page-waitFor",
+        "z": "9c3a87363bc34709",
+        "name": "",
+        "selector": "#fluid > form > div > input[type=submit]:nth-child(2)",
+        "selectortype": "str",
+        "x": 850,
+        "y": 40,
+        "wires": [
+            [
+                "477baca15c688036"
+            ]
+        ]
+    },
+    {
+        "id": "993929de357e3e51",
+        "type": "puppeteer-page-waitFor",
+        "z": "9c3a87363bc34709",
+        "name": "",
+        "selector": "#fluid > form > table:nth-child(18) > tbody",
+        "selectortype": "str",
+        "x": 550,
+        "y": 120,
+        "wires": [
+            [
+                "fc7cebf50e0ccd38"
+            ]
+        ]
+    },
+    {
+        "id": "fc7cebf50e0ccd38",
+        "type": "puppeteer-page-get-value",
+        "z": "9c3a87363bc34709",
+        "name": "",
+        "selector": "#fluid > form > table:nth-child(18) ",
+        "selectortype": "str",
+        "property": "innerHTML",
+        "propertytype": "str",
+        "x": 730,
+        "y": 120,
+        "wires": [
+            [
+                "f148c8ed772b12bf"
+            ]
+        ]
+    },
+    {
+        "id": "74730f33d2a8d6d1",
+        "type": "function",
+        "z": "8bd7a8a2e0f79ee7",
+        "name": "function 3",
+        "func": "// const client = algoliasearch('4NBT0DFZ4X', '953b3c1652443d8a7b8729c43691f659');\n// const index = client.initIndex('fha_approved_condos');\n// const requestOptions = {\n//     headers: { 'X-Algolia-UserToken': '196ae54e072f940e62acf5ef76c2dbbe' },\n//     attributesToRetrieve: ['firstname', 'lastname'],\n//     hitsPerPage: 50,\n// }\n\n// index.search('query string', requestOptions)\n//     .then(({ hits }) => {\n//         msg.hits = hits;\n//     });\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\n// const algoliasearch = require('algoliasearch')",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 180,
+        "wires": [
+            [
+                "303423b4ce1ac90b"
+            ]
+        ]
+    },
+    {
+        "id": "7fd35b43c333aff5",
+        "type": "inject",
+        "z": "8bd7a8a2e0f79ee7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 180,
+        "wires": [
+            [
+                "74730f33d2a8d6d1"
+            ]
+        ]
+    },
+    {
+        "id": "303423b4ce1ac90b",
+        "type": "debug",
+        "z": "8bd7a8a2e0f79ee7",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "764ec1a9dc31d375",
+        "type": "template",
+        "z": "1e470a97bdd78504",
+        "name": "condo body",
+        "field": "template.body",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "\n<script src=\"https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js\" integrity=\"sha256-EXPXz4W6pQgfYY3yTpnDa3OH8/EPn16ciVsPQ/ypsjk=\" crossorigin=\"anonymous\"></script>\n<script src=\"https://cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js\" integrity=\"sha256-LAGhRRdtVoD6RLo2qDQsU2mp+XVSciKRC8XPOBWmofM=\" crossorigin=\"anonymous\"></script>\n\n<script src=\"https://cdn.jsdelivr.net/npm/@algolia/autocomplete-js\"></script>\n\n\n\n<div class=\"m-auto w-3/4\">\n    <div id=\"autocomplete\"></div>\n</div>\n\n<script>\n    const { autocomplete, getAlgoliaResults } = window['@algolia/autocomplete-js'];\n    let searchClient = algoliasearch('4NBT0DFZ4X', '6eed53d46f12ab781b83b57e4a75a591');\n    autocomplete({\n        container: '#autocomplete',\n        placeholder: 'Search for an address',\n        getSources({ query }) {\n            return [\n                {\n                    sourceId: 'addresses',\n                    getItems() {\n                        return getAlgoliaResults({\n                            searchClient,\n                            queries: [\n                                {\n                                    indexName: 'fha_approved_condos',\n                                    query,\n                                    params: {\n                                        hitsPerPage: 5,\n                                        attributesToRetrieve: ['*'],\n                                        \n                                    },\n                                },\n                            ],\n                        });\n                    },\n                    templates: {\n                        item({ item, components, html }) {\n                            return html`<div class=\"aa-ItemWrapper\">\n                                <div class=\"aa-ItemContent\">\n                                    ${item['Condo Name']}\n                                </div>    \n                            </div>`;\n                        },\n                    },\n                },  \n            ];\n        }\n    });\n</script>\n",
+        "output": "str",
+        "x": 830,
+        "y": 260,
+        "wires": [
+            [
+                "1d1179d32d5ed0c4"
+            ]
+        ]
+    },
+    {
+        "id": "c5db8aa99ac7099d",
+        "type": "http in",
+        "z": "1e470a97bdd78504",
+        "name": "",
+        "url": "/condo",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 260,
+        "wires": [
+            [
+                "764ec1a9dc31d375"
+            ]
+        ]
+    },
+    {
+        "id": "504e581031c28f35",
+        "type": "template",
+        "z": "1e470a97bdd78504",
+        "name": "about body",
+        "field": "template.body",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<div class=\"bg-white\">\n  <div class=\"mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24\">\n    <div class=\"space-y-12\">\n      <h2 class=\"text-3xl font-bold tracking-tight sm:text-4xl sm:tracking-tight\">Meet our leadership</h2>\n\n      <ul role=\"list\" class=\"space-y-12 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8 lg:gap-y-12 lg:space-y-0\">\n        {{#payload}}\n        <li>\n          <div class=\"space-y-4 sm:grid sm:grid-cols-3 sm:gap-6 sm:space-y-0 lg:gap-8\">\n            <div class=\"h-0 aspect-w-3 aspect-h-2 sm:aspect-w-3 sm:aspect-h-4\">\n              <img class=\"object-cover shadow-lg rounded-lg\" src=\"{{ avatar.url }}\" alt=\"\">\n            </div>\n            <div class=\"sm:col-span-2\">\n              <div class=\"space-y-4\">\n                <div class=\"text-lg leading-6 font-medium space-y-1\">\n                  <h3>{{first_name}} {{last_name}}</h3>\n                  <p class=\"text-indigo-600\">{{title}}</p>\n                </div>\n                <div class=\"text-lg\">\n                  <p class=\"text-gray-500\">{{bio}}</p>\n                </div>\n              </div>\n            </div>\n          </div>\n        </li>\n        {{/payload}}\n        <!-- More people... -->\n      </ul>\n    </div>\n  </div>\n</div>\n",
+        "output": "str",
+        "x": 830,
+        "y": 300,
+        "wires": [
+            [
+                "1d1179d32d5ed0c4"
+            ]
+        ]
+    },
+    {
+        "id": "fa9e72a0ade0beed",
+        "type": "http in",
+        "z": "1e470a97bdd78504",
+        "name": "",
+        "url": "/condo/about",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 300,
+        "wires": [
+            [
+                "7cb304a8d4c4fbb3"
+            ]
+        ]
+    },
+    {
+        "id": "6a004fea6905c09e",
+        "type": "template",
+        "z": "1e470a97bdd78504",
+        "name": "contact body",
+        "field": "template.body",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<div class=\"container\">\n  <div class=\"relative bg-white\">\n    <div class=\"lg:absolute lg:inset-0\">\n      <div class=\"lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2\">\n        <img class=\"h-56 w-full object-cover lg:absolute lg:h-full\" src=\"https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80\" alt=\"\">\n      </div>\n    </div>\n    <div class=\"relative py-16 px-4 sm:py-24 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto lg:py-32 lg:grid lg:grid-cols-2\">\n      <div class=\"lg:pr-8\">\n        <div class=\"max-w-md mx-auto sm:max-w-lg lg:mx-0\">\n          <h2 class=\"text-3xl font-bold tracking-tight sm:text-4xl sm:tracking-tight\">Let's work together</h2>\n          <p class=\"mt-4 text-lg text-gray-500 sm:mt-3\">We’d love to hear from you! Send us a message using the form opposite, or email us. We’d love to hear from you! Send us a message using the form opposite, or email us.</p>\n          <!-- This example requires Tailwind CSS v2.0+ -->\n          <div class=\"bg-white\">\n            <div class=\"max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:py-14 lg:px-0\">\n              <div class=\"\">\n                <h2 class=\"text-2xl font-bold text-gray-900 sm:text-3xl sm:tracking-tight mb-3\">Get in touch</h2>\n                <div class=\"lg:grid lg:grid-cols-2 lg:gap-8 mb-8\">\n                  <div class=\"mt-8 grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 lg:mt-2 lg:col-span-2\">\n                    <div>\n                      <h3 class=\"text-lg leading-6 font-medium text-gray-900\">Collaborate</h3>\n                      <dl class=\"mt-2 text-base text-gray-500\">\n                        <div>\n                          <dt class=\"sr-only\">Email</dt>\n                          <dd>support@example.com</dd>\n                        </div>\n                        <div class=\"mt-1\">\n                          <dt class=\"sr-only\">Phone number</dt>\n                          <dd>+1 (555) 123-4567</dd>\n                        </div>\n                      </dl>\n                    </div>\n                    <div>\n                      <h3 class=\"text-lg leading-6 font-medium text-gray-900\">Press</h3>\n                      <dl class=\"mt-2 text-base text-gray-500\">\n                        <div>\n                          <dt class=\"sr-only\">Email</dt>\n                          <dd>support@example.com</dd>\n                        </div>\n                        <div class=\"mt-1\">\n                          <dt class=\"sr-only\">Phone number</dt>\n                          <dd>+1 (555) 123-4567</dd>\n                        </div>\n                      </dl>\n                    </div>\n                    <div>\n                      <h3 class=\"text-lg leading-6 font-medium text-gray-900\">Join our team</h3>\n                      <dl class=\"mt-2 text-base text-gray-500\">\n                        <div>\n                          <dt class=\"sr-only\">Email</dt>\n                          <dd>support@example.com</dd>\n                        </div>\n                        <div class=\"mt-1\">\n                          <dt class=\"sr-only\">Phone number</dt>\n                          <dd>+1 (555) 123-4567</dd>\n                        </div>\n                      </dl>\n                    </div>\n                    <div>\n                      <h3 class=\"text-lg leading-6 font-medium text-gray-900\">Say hello</h3>\n                      <dl class=\"mt-2 text-base text-gray-500\">\n                        <div>\n                          <dt class=\"sr-only\">Email</dt>\n                          <dd>support@example.com</dd>\n                        </div>\n                        <div class=\"mt-1\">\n                          <dt class=\"sr-only\">Phone number</dt>\n                          <dd>+1 (555) 123-4567</dd>\n                        </div>\n                      </dl>\n                    </div>\n                  </div>\n                </div>\n\n                <h2 class=\"text-2xl font-bold text-gray-900 sm:text-3xl sm:tracking-tight mb-3\">Locations</h2>\n                <div class=\"mt-8 grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 lg:mt-0 lg:col-span-2\">\n                  {{#payload}}\n                  <div>\n                    <h3 class=\"text-lg leading-6 font-medium text-gray-900\">{{nick_name}}</h3>\n                    <div class=\"mt-2 text-base text-gray-500\">\n                      <p>{{address_1}}</p>\n                      {{#address_2}}<p>{{.}}</p>{{/address_2}}\n                      <p class=\"mt-1\">{{city}}, {{state}} {{zip}}</p>\n                    </div>\n                  </div>\n                  {{/payload}}\n                </div>\n              </div>\n              \n              </div>\n\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>",
+        "output": "str",
+        "x": 830,
+        "y": 340,
+        "wires": [
+            [
+                "1d1179d32d5ed0c4"
+            ]
+        ]
+    },
+    {
+        "id": "81ee86ae6035725f",
+        "type": "http in",
+        "z": "1e470a97bdd78504",
+        "name": "",
+        "url": "/condo/contact",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 340,
+        "wires": [
+            [
+                "e066237f0efeefda"
+            ]
+        ]
+    },
+    {
+        "id": "67b4de3f79b16260",
+        "type": "http in",
+        "z": "1e470a97bdd78504",
+        "name": "",
+        "url": "/condo/auth",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 380,
+        "wires": [
+            [
+                "23f9f0aed1c0fa76"
+            ]
+        ]
+    },
+    {
+        "id": "5e4862585bf1e90a",
+        "type": "http response",
+        "z": "1e470a97bdd78504",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 910,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "23f9f0aed1c0fa76",
+        "type": "template",
+        "z": "1e470a97bdd78504",
+        "name": "login reg body",
+        "field": "template.body",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "\n  \n      <div class=\"min-h-full flex\" x-data=\"{islogin: true}\">\n        <div class=\"flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24\">\n          <div class=\"mx-auto w-full max-w-sm lg:w-96\">\n            <div>\n              <a href=\"/condo\" class=\"w-auto\">\n                <img class=\"w-auto h-16\"  src=\"https://d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/BeeProAgency/764480_747981/CondoEpproval%20Final%20Logo%202.png\" />\n              </a>\n              <h2 class=\"mt-6 text-3xl tracking-tight font-bold text-gray-900\">Sign in to your account</h2>\n              <p class=\"mt-2 text-sm text-gray-600\">\n                Or\n                <button @click=\"islogin = !islogin\" type=\"button\" class=\"font-medium text-indigo-600 hover:text-indigo-500\"> Register Now </button>\n              </p>\n            </div>\n\n            <div class=\"mt-8\" x-show=\"islogin\">\n\n              <div class=\"mt-6\">\n                <form action=\"#\" method=\"POST\" class=\"space-y-6\">\n                  <div>\n                    <label for=\"email\" class=\"block text-sm font-medium text-gray-700\"> Email address </label>\n                    <div class=\"mt-1\">\n                      <input id=\"email\" name=\"email\" type=\"email\" autocomplete=\"email\" required class=\"appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm\">\n                    </div>\n                  </div>\n\n                  <div class=\"space-y-1\">\n                    <label for=\"password\" class=\"block text-sm font-medium text-gray-700\"> Password </label>\n                    <div class=\"mt-1\">\n                      <input id=\"password\" name=\"password\" type=\"password\" autocomplete=\"current-password\" required class=\"appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm\">\n                    </div>\n                  </div>\n\n                  <div class=\"flex items-center justify-between\">\n                    <div class=\"flex items-center\">\n                      <input id=\"remember-me\" name=\"remember-me\" type=\"checkbox\" class=\"h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded\">\n                      <label for=\"remember-me\" class=\"ml-2 block text-sm text-gray-900\"> Remember me </label>\n                    </div>\n\n                    <div class=\"text-sm\">\n                      <a href=\"#\" class=\"font-medium text-indigo-600 hover:text-indigo-500\"> Forgot your password? </a>\n                    </div>\n                  </div>\n\n                  <div>\n                    <button type=\"submit\" class=\"w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500\">Sign in</button>\n                  </div>\n                </form>\n              </div>\n            </div>\n            <div class=\"mt-8\" x-show=\"!islogin\">\n\n              <div class=\"mt-6\">\n                <form action=\"#\" method=\"POST\" class=\"space-y-6\">\n                  <div>\n                    <label for=\"first_name\" class=\"block text-sm font-medium text-gray-700\"> First Name </label>\n                    <div class=\"mt-1\">\n                      <input id=\"first_name\" name=\"first_name\" type=\"text\" required class=\"appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm\">\n                    </div>\n                  </div>\n                  <div>\n                    <label for=\"last_name\" class=\"block text-sm font-medium text-gray-700\"> Last Name </label>\n                    <div class=\"mt-1\">\n                      <input id=\"last_name\" name=\"last_name\" type=\"text\" required class=\"appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm\">\n                    </div>\n                  </div>\n                  <div>\n                    <label for=\"email\" class=\"block text-sm font-medium text-gray-700\"> Email address </label>\n                    <div class=\"mt-1\">\n                      <input id=\"email\" name=\"email\" type=\"email\" autocomplete=\"email\" required class=\"appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm\">\n                    </div>\n                  </div>\n                  <div>\n                    <label for=\"user_type\" class=\"block text-sm font-medium text-gray-700\"> User Type </label>\n                    <div class=\"mt-1\">\n                      <select id=\"user_type\" name=\"user_type\"  required class=\"appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm\">\n                      <option value=\"HOA Board Member\">HOA Board Member</option>\n                      <option value=\"Property Manager\">Property Manager</option>\n                      <option value=\"Builder/ Developer\">Builder/ Developer</option>\n                      <option value=\"Lender\">Lender</option>\n                      <option value=\"Agent\">Agent</option>\n                      <option value=\"Buyer\">Buyer</option>\n                      <option value=\"Seller\">Seller</option>\n                      <option value=\"Other\">Other</option>\n                      </select>\n                    </div>\n                  </div>                                    \n                  <div class=\"space-y-1\">\n                    <label for=\"password\" class=\"block text-sm font-medium text-gray-700\"> Password </label>\n                    <div class=\"mt-1\">\n                      <input id=\"password\" name=\"password\" type=\"password\" autocomplete=\"current-password\" required class=\"appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm\">\n                    </div>\n                  </div>\n\n                  <div class=\"flex items-center justify-between\">\n                    <div class=\"flex items-center\">\n                      <input id=\"remember-me\" name=\"remember-me\" type=\"checkbox\" class=\"h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded\">\n                      <label for=\"remember-me\" class=\"ml-2 block text-sm text-gray-900\"> Remember me </label>\n                    </div>\n\n                    <div class=\"text-sm\">\n                      <a href=\"#\" class=\"font-medium text-indigo-600 hover:text-indigo-500\"> Forgot your password? </a>\n                    </div>\n                  </div>\n\n                  <div>\n                    <button type=\"submit\" class=\"w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500\">Sign in</button>\n                  </div>\n                </form>\n              </div>\n            </div>\n          </div>\n        </div>\n        <div class=\"hidden lg:block relative w-0 flex-1\">\n          <img class=\"absolute inset-0 h-full w-full object-cover\" src=\"https://images.unsplash.com/photo-1505904267569-f02eaeb45a4c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1908&q=80\" alt=\"\">\n        </div>\n      </div>\n  ",
+        "output": "str",
+        "x": 840,
+        "y": 380,
+        "wires": [
+            [
+                "1d1179d32d5ed0c4"
+            ]
+        ]
+    },
+    {
+        "id": "33a4e9e158f9a005",
+        "type": "template",
+        "z": "1e470a97bdd78504",
+        "name": "nav",
+        "field": "template.nav",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<nav class=\"relative z-50 flex justify-between\">\n    <div class=\"flex items-center md:gap-x-12\">\n        <a aria-label=\"Home\" href=\"/condo\">\n            <img src=\"https://d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/BeeProAgency/764480_747981/CondoEpproval%20Final%20Logo%202.png\" class=\"w-80\" />\n        </a>\n        <div class=\"hidden md:flex md:gap-x-6\">\n            {{!-- <a\n            class=\"inline-block rounded-lg py-1 px-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900\"\n            href=\"/#features\">Features</a>\n            <a\n            class=\"inline-block rounded-lg py-1 px-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900\"\n            href=\"/#testimonials\">Testimonials</a>\n            <a\n            class=\"inline-block rounded-lg py-1 px-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900\"\n            href=\"/#pricing\">Pricing</a> --}}\n        </div>\n    </div>\n    <div class=\"flex items-center gap-x-5 md:gap-x-8\">\n        <div class=\"hidden md:block\">\n            {{#authUser }}\n            <a\n                class=\"inline-block rounded-lg py-1 px-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900\"\n                href=\"/condo/logout\"\n            >Logout\n            </a>\n            <a\n                class=\"inline-block rounded-lg py-1 px-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900\"\n                href=\"/condo/auth\"\n            >{{ email }}\n            </a>\n            {{/authUser}}\n            {{^authUser }}\n            <a\n                class=\"inline-block rounded-lg py-1 px-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900\"\n                href=\"/condo/auth\"\n            >Login\n            </a>\n            {{/authUser}}\n        </div>\n        {{^authUser }}\n        <a\n            class=\"group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-blue-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600\"\n            href=\"/condo/auth?reg=true\"\n        >\n            <span>\n                Register</span>\n            </span>\n        </a>\n        {{/authUser}}\n        <div class=\"-mr-1 md:hidden\">\n            <div><button\n                    class=\"relative z-10 flex h-8 w-8 items-center justify-center [&amp;:not(:focus-visible)]:focus:outline-none\"\n                    aria-label=\"Toggle Navigation\" id=\"headlessui-popover-button-:R1p6:\" type=\"button\"\n                    aria-expanded=\"false\"><svg aria-hidden=\"true\" class=\"h-3.5 w-3.5 overflow-visible stroke-slate-700\"\n                        fill=\"none\" stroke-width=\"2\" stroke-linecap=\"round\">\n                        <path d=\"M0 1H14M0 7H14M0 13H14\" class=\"origin-center transition\"></path>\n                        <path d=\"M2 2L12 12M12 2L2 12\" class=\"origin-center transition scale-90 opacity-0\"></path>\n                    </svg>\n                </button>\n            </div>\n        </div>\n    </div>\n</nav>",
+        "output": "str",
+        "x": 290,
+        "y": 480,
+        "wires": [
+            [
+                "3ddd3fc680209269"
+            ]
+        ]
+    },
+    {
+        "id": "3ddd3fc680209269",
+        "type": "template",
+        "z": "1e470a97bdd78504",
+        "name": "head",
+        "field": "template.head",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Condo Epproval</title>\n<meta name=\"description\" content=\"Condo Epproval\">\n<link rel=\"icon\" href=\"./images/node-blue.ico\">\n<script src=\"//cdn.tailwindcss.com\"></script>\n<!-- Your own CSS -->\n<link type=\"text/css\" rel=\"stylesheet\" href=\"./index.css\" media=\"all\">\n<style>\n    @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');\n\n    .font-family-karla {\n        font-family: karla;\n    }\n</style>\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin=\"anonymous\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin=\"\">\n<link\n  rel=\"stylesheet\"\n  href=\"https://cdn.jsdelivr.net/npm/@algolia/autocomplete-theme-classic\"\n/>\n\n<style data-href=\"https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Lexend:wght@400;500&amp;display=swap\">@font-face{font-family:'Inter';font-style:normal;font-weight:100;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyeMZs.woff) format('woff')}@font-face{font-family:'Inter';font-style:normal;font-weight:200;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyfMZs.woff) format('woff')}@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuOKfMZs.woff) format('woff')}@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfMZs.woff) format('woff')}@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fMZs.woff) format('woff')}@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYMZs.woff) format('woff')}@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYMZs.woff) format('woff')}@font-face{font-family:'Inter';font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyYMZs.woff) format('woff')}@font-face{font-family:'Inter';font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuBWYMZs.woff) format('woff')}@font-face{font-family:'Lexend';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/lexend/v16/wlptgwvFAVdoq2_F94zlCfv0bz1WCzsW_LM.woff) format('woff')}@font-face{font-family:'Lexend';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/lexend/v16/wlptgwvFAVdoq2_F94zlCfv0bz1WCwkW_LM.woff) format('woff')}@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7W0Q5n-wU.woff2) format('woff2');unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa0ZL7W0Q5n-wU.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2ZL7W0Q5n-wU.woff2) format('woff2');unicode-range:U+1F00-1FFF}@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1pL7W0Q5n-wU.woff2) format('woff2');unicode-range:U+0370-03FF}@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2pL7W0Q5n-wU.woff2) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+1EA0-1EF9,U+20AB}@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa25L7W0Q5n-wU.woff2) format('woff2');unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Lexend';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/lexend/v16/wlpwgwvFAVdoq2_v9KQU82RHaBBX.woff2) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+1EA0-1EF9,U+20AB}@font-face{font-family:'Lexend';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/lexend/v16/wlpwgwvFAVdoq2_v9aQU82RHaBBX.woff2) format('woff2');unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Lexend';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/lexend/v16/wlpwgwvFAVdoq2_v-6QU82RHaA.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Lexend';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/lexend/v16/wlpwgwvFAVdoq2_v9KQU82RHaBBX.woff2) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+1EA0-1EF9,U+20AB}@font-face{font-family:'Lexend';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/lexend/v16/wlpwgwvFAVdoq2_v9aQU82RHaBBX.woff2) format('woff2');unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Lexend';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/lexend/v16/wlpwgwvFAVdoq2_v-6QU82RHaA.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}</style>\n\n<!-- Font Awesome -->\n<script src=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js\" integrity=\"sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=\" crossorigin=\"anonymous\"></script>\n<script src=\"//unpkg.com/axios/dist/axios.min.js\" defer></script>\n<script src=\"https://cdn.jsdelivr.net/npm/chart.js\" defer></script>\n<script src=\"//unpkg.com/alpinejs\" defer></script>\n<script type=\"text/javascript\">(function(w,s){var e=document.createElement(\"script\");e.type=\"text/javascript\";e.async=true;e.src=\"https://cdn.pagesense.io/js/capcamerica/d7b30b1c669e42f5946db3b16fa2b4b7.js\";var x=document.getElementsByTagName(\"script\")[0];x.parentNode.insertBefore(e,x);})(window,\"script\");</script>",
+        "output": "str",
+        "x": 430,
+        "y": 480,
+        "wires": [
+            [
+                "bd20035a25f03b3d"
+            ]
+        ]
+    },
+    {
+        "id": "0fadc3a3cab08ffb",
+        "type": "template",
+        "z": "1e470a97bdd78504",
+        "name": "chrome",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!doctype html>\n<html lang=\"en\" clas==\"h-screen\">\n    <head>\n        {{{template.head}}}\n    </head>\n    <body class=\"h-screen scroll-smooth bg-white flex flex-col justify-between\">\n        <header class=\"py-10\">\n            <div class=\"mx-auto max-w-7xl px-4 sm:px-6 lg:px-8\">\n                {{{template.nav}}}\n            </div>\n        </header>\n        {{{template.body}}}\n        {{{template.footer}}}\n    </body>\n</html>",
+        "output": "str",
+        "x": 720,
+        "y": 580,
+        "wires": [
+            [
+                "5e4862585bf1e90a"
+            ]
+        ]
+    },
+    {
+        "id": "6a2f43a82b8bf92b",
+        "type": "link in",
+        "z": "1e470a97bdd78504",
+        "name": "buildPageTemplate",
+        "links": [
+            "1d1179d32d5ed0c4"
+        ],
+        "x": 35,
+        "y": 480,
+        "wires": [
+            [
+                "4aada9a7ba0d730b"
+            ]
+        ]
+    },
+    {
+        "id": "1d1179d32d5ed0c4",
+        "type": "link out",
+        "z": "1e470a97bdd78504",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "6a2f43a82b8bf92b"
+        ],
+        "x": 1065,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "8f3af4fbbd83eccf",
+        "type": "debug",
+        "z": "1e470a97bdd78504",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 250,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "feb4f3c27e2cc686",
+        "type": "comment",
+        "z": "1e470a97bdd78504",
+        "name": "Home Page",
+        "info": "",
+        "x": 90,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "ab3995f90e752582",
+        "type": "http in",
+        "z": "1e470a97bdd78504",
+        "name": "",
+        "url": "/condo",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 120,
+        "wires": [
+            [
+                "8f3af4fbbd83eccf"
+            ]
+        ]
+    },
+    {
+        "id": "3d82b1cfd8864144",
+        "type": "template",
+        "z": "1e470a97bdd78504",
+        "name": "chromeless",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!doctype html>\n<html class=\"h-full bg-white\">\n    <head>\n        {{{template.head}}}\n    </head>\n    <body class=\"h-full\">\n        {{{template.body}}}\n    </body>\n  </html>\n    \n",
+        "output": "str",
+        "x": 710,
+        "y": 520,
+        "wires": [
+            [
+                "5e4862585bf1e90a"
+            ]
+        ]
+    },
+    {
+        "id": "4cca2872aebbe11b",
+        "type": "switch",
+        "z": "1e470a97bdd78504",
+        "name": "",
+        "property": "req.route.path",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "/condo/auth",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 250,
+        "y": 560,
+        "wires": [
+            [
+                "78d0373fd6dd89b1"
+            ],
+            [
+                "0fadc3a3cab08ffb"
+            ]
+        ]
+    },
+    {
+        "id": "dc4e42f105771e48",
+        "type": "http in",
+        "z": "1e470a97bdd78504",
+        "name": "",
+        "url": "/condo/auth",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 60,
+        "wires": [
+            [
+                "375be725b3d4c1a5"
+            ]
+        ]
+    },
+    {
+        "id": "23fc9bacf27c6e28",
+        "type": "http in",
+        "z": "1e470a97bdd78504",
+        "name": "",
+        "url": "/magiclink",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 20,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "47c93d69a0293f93",
+        "type": "link call",
+        "z": "1e470a97bdd78504",
+        "name": "Xano Condo API Call",
+        "links": [
+            "7e80a8d6893b4bd0"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 460,
+        "y": 60,
+        "wires": [
+            [
+                "54bfaa7174397d3b"
+            ]
+        ]
+    },
+    {
+        "id": "375be725b3d4c1a5",
+        "type": "function",
+        "z": "1e470a97bdd78504",
+        "name": "Set. URL",
+        "func": "msg.url = global.get(\"xano_condo_base_url\") + \"auth/login\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 60,
+        "wires": [
+            [
+                "47c93d69a0293f93"
+            ]
+        ]
+    },
+    {
+        "id": "78d0373fd6dd89b1",
+        "type": "switch",
+        "z": "1e470a97bdd78504",
+        "name": "",
+        "property": "req.method",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "POST",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 530,
+        "y": 540,
+        "wires": [
+            [
+                "3d82b1cfd8864144"
+            ],
+            [
+                "0fadc3a3cab08ffb"
+            ]
+        ]
+    },
+    {
+        "id": "bd20035a25f03b3d",
+        "type": "template",
+        "z": "1e470a97bdd78504",
+        "name": "footer",
+        "field": "template.footer",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "\n        <!-- This example requires Tailwind CSS v2.0+ -->\n        <footer class=\"bg-white\">\n            <div class=\"max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8\">\n                <nav class=\"-mx-5 -my-2 flex flex-wrap justify-center\" aria-label=\"Footer\">\n                <div class=\"px-5 py-2\">\n                    <a href=\"/condo/about\" class=\"text-base text-gray-500 hover:text-gray-900\"> About </a>\n                </div>\n\n                {{!-- <div class=\"px-5 py-2\">\n                    <a href=\"#\" class=\"text-base text-gray-500 hover:text-gray-900\"> Blog </a>\n                </div> --}}\n\n                <div class=\"px-5 py-2\">\n                    <a href=\"/condo/contact\" class=\"text-base text-gray-500 hover:text-gray-900\"> Contact </a>\n                </div>\n\n                {{!-- <div class=\"px-5 py-2\">\n                    <a href=\"#\" class=\"text-base text-gray-500 hover:text-gray-900\"> Press </a>\n                </div>\n\n                <div class=\"px-5 py-2\">\n                    <a href=\"#\" class=\"text-base text-gray-500 hover:text-gray-900\"> Accessibility </a>\n                </div>\n\n                <div class=\"px-5 py-2\">\n                    <a href=\"#\" class=\"text-base text-gray-500 hover:text-gray-900\"> Partners </a>\n                </div> --}}\n                </nav>\n                <div class=\"mt-8 flex justify-center space-x-6\">\n                <a href=\"#\" class=\"text-gray-400 hover:text-gray-500\">\n                    <span class=\"sr-only\">Facebook</span>\n                    <svg class=\"h-6 w-6\" fill=\"currentColor\" viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n                    <path fill-rule=\"evenodd\" d=\"M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z\" clip-rule=\"evenodd\" />\n                    </svg>\n                </a>\n\n                <a href=\"#\" class=\"text-gray-400 hover:text-gray-500\">\n                    <span class=\"sr-only\">Instagram</span>\n                    <svg class=\"h-6 w-6\" fill=\"currentColor\" viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n                    <path fill-rule=\"evenodd\" d=\"M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z\" clip-rule=\"evenodd\" />\n                    </svg>\n                </a>\n\n                <a href=\"#\" class=\"text-gray-400 hover:text-gray-500\">\n                    <span class=\"sr-only\">Twitter</span>\n                    <svg class=\"h-6 w-6\" fill=\"currentColor\" viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n                    <path d=\"M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84\" />\n                    </svg>\n                </a>\n                </div>\n                <p class=\"mt-8 text-center text-base text-gray-400\">&copy; {{global.year}} CondoEpproval, Inc. All rights reserved.</p>\n            </div>\n        </footer>\n\n        <script type=\"text/javascript\" id=\"zsiqchat\">var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq || {widgetcode: \"43657f432fbbbeed766530ecdadd3125fe0661c0bdc0f4283a3725af7f8a4172\", values:{},ready:function(){}};var d=document;s=d.createElement(\"script\");s.type=\"text/javascript\";s.id=\"zsiqscript\";s.defer=true;s.src=\"https://salesiq.zoho.com/widget\";t=d.getElementsByTagName(\"script\")[0];t.parentNode.insertBefore(s,t);</script>",
+        "output": "str",
+        "x": 550,
+        "y": 480,
+        "wires": [
+            [
+                "4cca2872aebbe11b"
+            ]
+        ]
+    },
+    {
+        "id": "b9728e68ee1dc7ef",
+        "type": "link call",
+        "z": "1e470a97bdd78504",
+        "name": "Xano Condo API Call",
+        "links": [
+            "2075fb73594d9f5c"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 540,
+        "y": 300,
+        "wires": [
+            [
+                "504e581031c28f35"
+            ]
+        ]
+    },
+    {
+        "id": "871d2eb16fc16a6d",
+        "type": "function",
+        "z": "1e470a97bdd78504",
+        "name": "validate authorization",
+        "func": "if (msg.payload.code){\n    msg.cookies = msg.cookies || {}\n    msg.cookies[\"condoEpproval-Authorization\"] = null\n\n    msg.payload = 'Unauthorized'\n    msg.statusCode = 401\n    return [null, msg]\n}\n\nlet Cookie = ((msg.cookies || {})[\"condoEpproval-Authorization\"] ||'').trim()\nif (Cookie !== '') {\n    msg.cookies = msg.cookies || {}\n    msg.cookies[\"condoEpproval-Authorization\"] = Cookie\n    msg.cookies[\"condoEpproval-xUser\"] = JSON.stringify(msg.payload)\n    msg.authenticatedUser = msg.payload;\n    return [msg, null]\n}\n\nmsg.cookies = msg.cookies || {}\nmsg.cookies[\"condoEpproval-Authorization\"] = null\n\nmsg.payload = 'Unauthorized'\nmsg.statusCode = 401\nreturn [null, msg]\n\n",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "crypto",
+                "module": "crypto"
+            }
+        ],
+        "x": 660,
+        "y": 880,
+        "wires": [
+            [
+                "23e88aa0a9ae3eb6"
+            ],
+            [
+                "0c01794e042a6bf9"
+            ]
+        ]
+    },
+    {
+        "id": "23e88aa0a9ae3eb6",
+        "type": "function",
+        "z": "1e470a97bdd78504",
+        "name": "refresh token",
+        "func": "  // let Expiration   = Date.now() + global.get('TokenLifetime')\n  // let TokenContent = msg.authenticatedUser + ':' + Expiration\n\n  // let TokenKey = global.get('TokenKey')\n  //   const HMAC = crypto.createHmac('sha256',TokenKey)\n  //   HMAC.update(TokenContent)\n  // let Digest = HMAC.digest('hex')\n\n  // msg.cookies = msg.cookies || {}\n  // msg.cookies.authorization = { value:TokenContent + ':' + Digest }\n  \n  return msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "crypto",
+                "module": "crypto"
+            }
+        ],
+        "x": 910,
+        "y": 860,
+        "wires": [
+            [
+                "21227db9d24af9f3"
+            ]
+        ]
+    },
+    {
+        "id": "434dd3fe0b2462c2",
+        "type": "link call",
+        "z": "1e470a97bdd78504",
+        "name": "Xano Condo API Call",
+        "links": [
+            "2075fb73594d9f5c"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 440,
+        "y": 880,
+        "wires": [
+            [
+                "871d2eb16fc16a6d"
+            ]
+        ]
+    },
+    {
+        "id": "42e31def1ea168b0",
+        "type": "function",
+        "z": "1e470a97bdd78504",
+        "name": "Set URL",
+        "func": "\nmsg.url = global.get(\"xano_condo_base_url\") + \"auth/me\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 880,
+        "wires": [
+            [
+                "434dd3fe0b2462c2"
+            ]
+        ]
+    },
+    {
+        "id": "70f24a307e7d0de3",
+        "type": "http response",
+        "z": "1e470a97bdd78504",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1090,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "7cb304a8d4c4fbb3",
+        "type": "function",
+        "z": "1e470a97bdd78504",
+        "name": "",
+        "func": "msg.headers = msg.headers || {};\nmsg.cookies = msg.cookies || {};\nmsg.url = \"https://xdhh-3cty-erfr.n7.xano.io/api:9FPWlPBi/team\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 300,
+        "wires": [
+            [
+                "b9728e68ee1dc7ef"
+            ]
+        ]
+    },
+    {
+        "id": "4aada9a7ba0d730b",
+        "type": "function",
+        "z": "1e470a97bdd78504",
+        "name": "function 4",
+        "func": "if (msg.req.cookies[\"condoEpproval-xUser\"]){\n    msg.authUser = JSON.parse(msg.req.cookies[\"condoEpproval-xUser\"]);\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 160,
+        "y": 480,
+        "wires": [
+            [
+                "33a4e9e158f9a005"
+            ]
+        ]
+    },
+    {
+        "id": "da0e8cbb4f311557",
+        "type": "http in",
+        "z": "1e470a97bdd78504",
+        "name": "",
+        "url": "/condo/logout",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 220,
+        "wires": [
+            [
+                "f97b6aac631f4e4a"
+            ]
+        ]
+    },
+    {
+        "id": "f97b6aac631f4e4a",
+        "type": "function",
+        "z": "1e470a97bdd78504",
+        "name": "",
+        "func": "\nvar cookieNames = Object.keys(msg.req.cookies)\n    .filter(\n        function (cookieName) { \n            return /^condoEpproval-/.test(cookieName); \n            }\n        );\nmsg.cookies = {};\n\ncookieNames.forEach(function (cookieName) {\n    msg.cookies[cookieName] = null;\n});\nmsg.responseUrlstring = \"/condo\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 220,
+        "wires": [
+            [
+                "be2898031f246133"
+            ]
+        ]
+    },
+    {
+        "id": "be2898031f246133",
+        "type": "change",
+        "z": "1e470a97bdd78504",
+        "name": "Redirect to /home",
+        "rules": [
+            {
+                "t": "set",
+                "p": "statusCode",
+                "pt": "msg",
+                "to": "302",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers.location",
+                "pt": "msg",
+                "to": "/condo",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 530,
+        "y": 220,
+        "wires": [
+            [
+                "70f24a307e7d0de3"
+            ]
+        ]
+    },
+    {
+        "id": "54bfaa7174397d3b",
+        "type": "function",
+        "z": "1e470a97bdd78504",
+        "name": "Add a cookie",
+        "func": "msg.cookies = { };\nmsg.headers = msg.headers || { };\nmsg.headers.authorization = msg.payload.authToken;\nmsg.cookies[\"condoEpproval-Authorization\"] = msg.payload.authToken;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 60,
+        "wires": [
+            [
+                "e1dce43b57fc95bc"
+            ]
+        ]
+    },
+    {
+        "id": "34341736065dad79",
+        "type": "change",
+        "z": "1e470a97bdd78504",
+        "name": "Redirect to /home",
+        "rules": [
+            {
+                "t": "set",
+                "p": "statusCode",
+                "pt": "msg",
+                "to": "302",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers.location",
+                "pt": "msg",
+                "to": "/condo",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1030,
+        "y": 40,
+        "wires": [
+            [
+                "70f24a307e7d0de3"
+            ]
+        ]
+    },
+    {
+        "id": "0c01794e042a6bf9",
+        "type": "change",
+        "z": "1e470a97bdd78504",
+        "name": "Redirect to /home",
+        "rules": [
+            {
+                "t": "set",
+                "p": "statusCode",
+                "pt": "msg",
+                "to": "302",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers.location",
+                "pt": "msg",
+                "to": "/condo",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
+        "y": 900,
+        "wires": [
+            [
+                "9ac27be4d79bc278"
+            ]
+        ]
+    },
+    {
+        "id": "61905f207bb45ff4",
+        "type": "link call",
+        "z": "1e470a97bdd78504",
+        "name": "Xano Condo API Call",
+        "links": [
+            "2075fb73594d9f5c"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 540,
+        "y": 340,
+        "wires": [
+            [
+                "6a004fea6905c09e"
+            ]
+        ]
+    },
+    {
+        "id": "e066237f0efeefda",
+        "type": "function",
+        "z": "1e470a97bdd78504",
+        "name": "",
+        "func": "msg.headers = msg.headers || {};\nmsg.cookies = msg.cookies || {};\nmsg.url = \"https://xdhh-3cty-erfr.n7.xano.io/api:9FPWlPBi/our_locations\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 340,
+        "wires": [
+            [
+                "61905f207bb45ff4"
+            ]
+        ]
+    },
+    {
+        "id": "a6dd02a24e3f3830",
+        "type": "reusable-in",
+        "z": "1e470a97bdd78504",
+        "name": "cookie auth",
+        "info": "describe your reusable flow here",
+        "scope": "local",
+        "x": 90,
+        "y": 880,
+        "wires": [
+            [
+                "42e31def1ea168b0"
+            ]
+        ]
+    },
+    {
+        "id": "21227db9d24af9f3",
+        "type": "reusable-out",
+        "z": "1e470a97bdd78504",
+        "name": "authorized",
+        "position": 1,
+        "x": 1070,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "9ac27be4d79bc278",
+        "type": "reusable-out",
+        "z": "1e470a97bdd78504",
+        "name": "unauthorized",
+        "position": "2",
+        "x": 1070,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "e1dce43b57fc95bc",
+        "type": "reusable",
+        "z": "1e470a97bdd78504",
+        "name": "",
+        "target": "cookie auth",
+        "outputs": 2,
+        "x": 810,
+        "y": 60,
+        "wires": [
+            [
+                "34341736065dad79"
+            ],
+            [
+                "70f24a307e7d0de3"
+            ]
+        ],
+        "outputLabels": [
+            "authorized",
+            "unauthorized"
+        ]
+    },
+    {
+        "id": "a36184975f9af894",
+        "type": "http in",
+        "z": "9caf88784e0679f6",
+        "name": "",
+        "url": "/helmet",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 120,
+        "wires": [
+            [
+                "10e18173aedf864e"
+            ]
+        ]
+    },
+    {
+        "id": "10e18173aedf864e",
+        "type": "change",
+        "z": "9caf88784e0679f6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "payload.goto",
+                "pt": "msg",
+                "to": "https://entp.hud.gov/idapp/html/condlook.cfm",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 80,
+        "wires": [
+            [
+                "20217a80fbd71509"
+            ]
+        ]
+    },
+    {
+        "id": "cce0a7be6a24bfb2",
+        "type": "debug",
+        "z": "9caf88784e0679f6",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "da0ccb915ec6b347",
+        "type": "inject",
+        "z": "9caf88784e0679f6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 40,
+        "wires": [
+            [
+                "10e18173aedf864e"
+            ]
+        ]
+    },
+    {
+        "id": "f62753925bfbee9a",
+        "type": "comment",
+        "z": "9caf88784e0679f6",
+        "name": "initiate the flow",
+        "info": "",
+        "x": 140,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "e4cf2962079f338d",
+        "type": "comment",
+        "z": "9caf88784e0679f6",
+        "name": "set the website to go to",
+        "info": "",
+        "x": 440,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "4e724066d7eb8f47",
+        "type": "comment",
+        "z": "9caf88784e0679f6",
+        "name": "open browser",
+        "info": "",
+        "x": 670,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "4ef585550d81ec54",
+        "type": "comment",
+        "z": "9caf88784e0679f6",
+        "name": "load the website in the browser",
+        "info": "",
+        "x": 930,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "233da803d350855d",
+        "type": "comment",
+        "z": "9caf88784e0679f6",
+        "name": "wait till the submit button is present",
+        "info": "",
+        "x": 280,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "eda988efcbb7a96c",
+        "type": "comment",
+        "z": "9caf88784e0679f6",
+        "name": "click the submit button",
+        "info": "",
+        "x": 580,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "1454a566b12f4427",
+        "type": "comment",
+        "z": "9caf88784e0679f6",
+        "name": "wait till the condo table loads",
+        "info": "",
+        "x": 920,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "8d1e6a2b8b12a531",
+        "type": "link out",
+        "z": "9caf88784e0679f6",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "38a668588e37f989"
+        ],
+        "x": 1065,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "38a668588e37f989",
+        "type": "link in",
+        "z": "9caf88784e0679f6",
+        "name": "link in 1",
+        "links": [
+            "8d1e6a2b8b12a531"
+        ],
+        "x": 75,
+        "y": 220,
+        "wires": [
+            [
+                "43ee56cc64a66ff7"
+            ]
+        ]
+    },
+    {
+        "id": "e4d21ae0229ca021",
+        "type": "link out",
+        "z": "9caf88784e0679f6",
+        "name": "link out 2",
+        "mode": "link",
+        "links": [
+            "6f6961d0daa806e5"
+        ],
+        "x": 1065,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "6f6961d0daa806e5",
+        "type": "link in",
+        "z": "9caf88784e0679f6",
+        "name": "link in 2",
+        "links": [
+            "e4d21ae0229ca021"
+        ],
+        "x": 75,
+        "y": 340,
+        "wires": [
+            [
+                "d2b44cd8f482750a"
+            ]
+        ]
+    },
+    {
+        "id": "d2b44cd8f482750a",
+        "type": "html",
+        "z": "9caf88784e0679f6",
+        "name": "",
+        "property": "payload",
+        "outproperty": "payload",
+        "tag": "#fluid > form > table:nth-child(18)>tbody>tr>td",
+        "ret": "html",
+        "as": "single",
+        "x": 340,
+        "y": 340,
+        "wires": [
+            [
+                "f3d1c2c32a553f1d"
+            ]
+        ]
+    },
+    {
+        "id": "f15d65903da511a9",
+        "type": "cheerio",
+        "z": "9caf88784e0679f6",
+        "name": "",
+        "tag": "tbody",
+        "ret": "html",
+        "as": "multi",
+        "map": [
+            {
+                "search": "tr",
+                "ret": "html",
+                "replace": "row",
+                "attr": ""
+            }
+        ],
+        "xmlMode": true,
+        "decodeEntities": true,
+        "lowerCaseTags": false,
+        "lowerCaseAttributeNames": true,
+        "recognizeCDATA": false,
+        "recognizeSelfClosing": false,
+        "x": 630,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "20217a80fbd71509",
+        "type": "puppeteer-browser-launch",
+        "z": "9caf88784e0679f6",
+        "timeout": "30000",
+        "slowMo": 0,
+        "headless": true,
+        "debugport": 0,
+        "devtools": false,
+        "name": "",
+        "x": 660,
+        "y": 80,
+        "wires": [
+            [
+                "e2769021c710c757"
+            ]
+        ]
+    },
+    {
+        "id": "f3d1c2c32a553f1d",
+        "type": "puppeteer-browser-close",
+        "z": "9caf88784e0679f6",
+        "name": "",
+        "x": 720,
+        "y": 340,
+        "wires": [
+            [
+                "cce0a7be6a24bfb2"
+            ]
+        ]
+    },
+    {
+        "id": "e2769021c710c757",
+        "type": "puppeteer-page-goto",
+        "z": "9caf88784e0679f6",
+        "name": "",
+        "url": "payload.goto",
+        "urltype": "msg",
+        "waitUntil": "networkidle0",
+        "x": 890,
+        "y": 80,
+        "wires": [
+            [
+                "8d1e6a2b8b12a531"
+            ]
+        ]
+    },
+    {
+        "id": "37365d8baff9cb01",
+        "type": "puppeteer-page-click",
+        "z": "9caf88784e0679f6",
+        "selector": "#fluid > form > div > input[type=submit]:nth-child(2)",
+        "selectortype": "str",
+        "button": "left",
+        "clickCount": 1,
+        "delay": 0,
+        "name": "",
+        "x": 610,
+        "y": 220,
+        "wires": [
+            [
+                "5cd64eec1a3acd36"
+            ]
+        ]
+    },
+    {
+        "id": "43ee56cc64a66ff7",
+        "type": "puppeteer-page-waitFor",
+        "z": "9caf88784e0679f6",
+        "name": "",
+        "selector": "#fluid > form > div > input[type=submit]:nth-child(2)",
+        "selectortype": "str",
+        "x": 270,
+        "y": 220,
+        "wires": [
+            [
+                "37365d8baff9cb01"
+            ]
+        ]
+    },
+    {
+        "id": "5cd64eec1a3acd36",
+        "type": "puppeteer-page-waitFor",
+        "z": "9caf88784e0679f6",
+        "name": "",
+        "selector": "#fluid > form > table:nth-child(18) > tbody",
+        "selectortype": "str",
+        "x": 850,
+        "y": 220,
+        "wires": [
+            [
+                "e4d21ae0229ca021"
+            ]
+        ]
+    },
+    {
+        "id": "970ec70b8bf836f0",
+        "type": "puppeteer-page-get-value",
+        "z": "9caf88784e0679f6",
+        "name": "",
+        "selector": "#fluid > form > table:nth-child(18) > tbody>tr>td",
+        "selectortype": "str",
+        "property": "innerHTML",
+        "propertytype": "str",
+        "x": 140,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    }
+]

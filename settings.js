@@ -305,7 +305,7 @@ module.exports = {
         tours: false,
         projects: {
             // To enable the Projects feature, set this value to true
-            enabled: true,
+            enabled: process.env.PROJECTS_ENABLED || true,
         },
         codeEditor: {
             lib: "monaco",
